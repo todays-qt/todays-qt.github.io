@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인정보처리방침 - Privacy Policy | 오늘의큐티</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f7fafc;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            padding: 5px;
+        }
+
+        .language-switch button {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: all 0.3s;
+            color: #667eea;
+            font-size: 0.95rem;
+        }
+
+        .language-switch button.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .language-switch button:hover {
+            background: #edf2f7;
+        }
+
+        .language-switch button.active:hover {
+            background: #5568d3;
+        }
+
+        [lang]:not(.active-lang) {
+            display: none;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        h2 {
+            color: #2d3748;
+            font-size: 1.6rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        h3 {
+            color: #4a5568;
+            font-size: 1.3rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: #4a5568;
+        }
+
+        .info-box {
+            background: #edf2f7;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .highlight-box {
+            background: #fff5f5;
+            border-left: 4px solid #fc8181;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .highlight-box strong {
+            color: #c53030;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: #f7fafc;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-info {
+            background: #f0f4ff;
+            border: 2px solid #667eea;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .contact-info strong {
+            color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .language-switch {
+                top: 10px;
+                right: 10px;
+                padding: 3px;
+            }
+
+            .language-switch button {
+                padding: 8px 15px;
+                font-size: 0.85rem;
+            }
+
+            .container {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="setLanguage('ko')" id="btn-ko" class="active">한국어</button>
+        <button onclick="setLanguage('en')" id="btn-en">English</button>
+    </div>
+
+    <header class="header">
+        <h1 lang="ko" class="active-lang">개인정보처리방침</h1>
+        <h1 lang="en">Privacy Policy</h1>
+        
+        <p lang="ko" class="active-lang">최종 업데이트: 2025년 11월 10일</p>
+        <p lang="en">Last Updated: November 10, 2025</p>
+    </header>
+
+    <div class="container">
+        <a href="index.html" class="back-link" lang="ko" class="active-lang">← 홈으로 돌아가기</a>
+        <a href="index.html" class="back-link" lang="en">← Back to Home</a>
+
+        <!-- Korean Version -->
+        <div lang="ko" class="active-lang">
+            <h2>1. 개인정보의 처리 목적</h2>
+            <p>"오늘의큐티" (이하 "본 앱")은 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 「개인정보 보호법」 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.</p>
+            
+            <ul>
+                <li>회원 가입 및 관리 (이메일 기반 회원제 서비스 제공)</li>
+                <li>사용자가 작성한 나눔글 및 묵상 내용 저장 및 관리</li>
+                <li>서비스 제공 및 운영</li>
+                <li>사용자 맞춤형 알림 서비스 제공</li>
+                <li>서비스 개선 및 통계 분석</li>
+            </ul>
+
+            <h2>2. 수집하는 개인정보 항목</h2>
+            <p>본 앱은 최소한의 개인정보만을 수집하며, 다음과 같은 정보를 처리하고 있습니다:</p>
+
+            <div class="highlight-box">
+                <h3>📧 필수 수집 항목 (회원가입 시)</h3>
+                <ul>
+                    <li><strong>이메일 주소</strong> - 회원 식별 및 계정 관리 목적</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>중요:</strong> 본 앱은 비밀번호를 수집하거나 저장하지 않습니다. 모든 인증은 Firebase Authentication을 통해 안전하게 처리됩니다.</p>
+            </div>
+
+            <h3>자동으로 수집되는 정보</h3>
+            <ul>
+                <li>기기 정보 (기기 모델, OS 버전)</li>
+                <li>앱 사용 기록 및 분석 데이터 (Firebase Analytics)</li>
+                <li>광고 식별자 (Google AdMob 광고 제공을 위해)</li>
+                <li>나눔글 작성 내용 (사용자가 직접 작성한 묵상 및 나눔 내용)</li>
+            </ul>
+
+            <h2>3. 개인정보의 처리 및 보유기간</h2>
+            <p>본 앱은 법령에 따른 개인정보 보유·이용기간 또는 정보주체로부터 개인정보를 수집 시에 동의받은 개인정보 보유·이용기간 내에서 개인정보를 처리·보유합니다.</p>
+
+            <div class="info-box">
+                <h3>처리 및 보유기간</h3>
+                <ul>
+                    <li><strong>이메일 주소:</strong> 회원 탈퇴 시까지 (탈퇴 즉시 삭제)</li>
+                    <li><strong>나눔글 및 묵상 내용:</strong> 회원 탈퇴 시까지 (탈퇴 시 사용자 선택에 따라 삭제 또는 익명 처리)</li>
+                    <li><strong>앱 사용 기록:</strong> 수집일로부터 3개월</li>
+                    <li><strong>광고 관련 데이터:</strong> Google AdMob 정책에 따름</li>
+                </ul>
+            </div>
+
+            <h2>4. 개인정보의 제3자 제공</h2>
+            <p>본 앱은 원칙적으로 사용자의 개인정보를 외부에 제공하지 않습니다. 다만, 아래의 경우에는 예외로 합니다:</p>
+            
+            <ul>
+                <li>사용자가 사전에 동의한 경우</li>
+                <li>법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우</li>
+            </ul>
+
+            <h2>5. 개인정보처리의 위탁</h2>
+            <p>본 앱은 원활한 서비스 제공을 위해 다음과 같이 개인정보 처리업무를 위탁하고 있습니다:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>수탁업체</th>
+                        <th>위탁업무 내용</th>
+                        <th>개인정보 보유 및 이용기간</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Google Firebase</td>
+                        <td>
+                            - 회원 인증 (Firebase Authentication)<br>
+                            - 데이터 저장 (Firestore Database)<br>
+                            - 푸시 알림 (Firebase Cloud Messaging)<br>
+                            - 앱 사용 분석 (Firebase Analytics)
+                        </td>
+                        <td>회원 탈퇴 시 또는 위탁 계약 종료 시까지</td>
+                    </tr>
+                    <tr>
+                        <td>Google AdMob</td>
+                        <td>
+                            - 앱 내 광고 게재<br>
+                            - 광고 성과 측정 및 분석
+                        </td>
+                        <td>Google AdMob 정책에 따름</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box">
+                <h3>🔒 Firebase를 통한 데이터 보안</h3>
+                <p>본 앱은 Firebase를 사용하여 다음과 같이 데이터를 안전하게 관리합니다:</p>
+                <ul>
+                    <li><strong>이메일 주소</strong>는 Firebase Authentication에서 암호화되어 저장됩니다</li>
+                    <li><strong>비밀번호는 앱에서 수집하거나 저장하지 않으며</strong>, Firebase가 안전하게 관리합니다</li>
+                    <li><strong>나눔글 데이터</strong>는 Firebase Firestore에 암호화되어 저장됩니다</li>
+                    <li>모든 데이터 전송은 HTTPS를 통해 암호화됩니다</li>
+                </ul>
+            </div>
+
+            <h2>6. Google AdMob 광고 서비스</h2>
+            <p>본 앱은 Google AdMob을 통해 광고를 제공하며, 이 과정에서 다음과 같은 정보가 처리될 수 있습니다:</p>
+
+            <h3>수집되는 정보</h3>
+            <ul>
+                <li>광고 식별자 (Advertising ID)</li>
+                <li>기기 정보 및 IP 주소</li>
+                <li>앱 사용 정보 및 광고 인터랙션 데이터</li>
+            </ul>
+
+            <h3>광고 맞춤 설정</h3>
+            <p>사용자는 기기 설정에서 맞춤형 광고를 거부할 수 있습니다:</p>
+            <ul>
+                <li><strong>Android:</strong> 설정 > Google > 광고 > 광고 맞춤설정 선택 해제</li>
+                <li><strong>iOS:</strong> 설정 > 개인정보 보호 > 추적 > 앱이 추적을 요청하도록 허용 끄기</li>
+            </ul>
+
+            <p>Google의 광고 서비스 및 개인정보 처리에 대한 자세한 내용은 다음 링크에서 확인하실 수 있습니다:</p>
+            <ul>
+                <li>Google 개인정보처리방침: <a href="https://policies.google.com/privacy" target="_blank" style="color: #667eea;">https://policies.google.com/privacy</a></li>
+                <li>AdMob 및 광고: <a href="https://support.google.com/admob/answer/6128543" target="_blank" style="color: #667eea;">https://support.google.com/admob/answer/6128543</a></li>
+            </ul>
+
+            <h2>7. 정보주체의 권리·의무 및 행사방법</h2>
+            <p>정보주체는 개인정보주체로서 다음과 같은 권리를 행사할 수 있습니다:</p>
+
+            <ol>
+                <li>개인정보 열람 요구</li>
+                <li>개인정보 오류 등이 있을 경우 정정 요구</li>
+                <li>개인정보 삭제 요구</li>
+                <li>개인정보 처리정지 요구</li>
+            </ol>
+
+            <p>권리 행사는 앱 내 '설정 > 계정 관리' 메뉴를 통해 직접 하실 수 있으며, 서면, 전자우편 등을 통하여 하실 수 있고 본 앱은 이에 대해 지체없이 조치하겠습니다.</p>
+
+            <h2>8. 개인정보의 파기</h2>
+            <p>본 앱은 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체없이 해당 개인정보를 파기합니다.</p>
+
+            <h3>파기절차 및 방법</h3>
+            <ul>
+                <li><strong>회원 탈퇴 시:</strong> 이메일 주소 및 관련 데이터는 즉시 Firebase에서 삭제됩니다</li>
+                <li><strong>데이터 파기:</strong> Firebase의 삭제 기능을 통해 복구 불가능하게 영구 삭제됩니다</li>
+                <li><strong>로그 데이터:</strong> 3개월 후 자동으로 삭제됩니다</li>
+            </ul>
+
+            <h2>9. 개인정보의 안전성 확보조치</h2>
+            <p>본 앱은 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고 있습니다:</p>
+
+            <ul>
+                <li><strong>관리적 조치:</strong> 개인정보 취급 직원의 최소화 및 교육</li>
+                <li><strong>기술적 조치:</strong> 
+                    <ul>
+                        <li>Firebase Security Rules를 통한 데이터 접근 제한</li>
+                        <li>HTTPS를 통한 모든 데이터 전송 암호화</li>
+                        <li>Firebase Authentication을 통한 안전한 인증</li>
+                        <li>정기적인 보안 업데이트 및 취약점 점검</li>
+                    </ul>
+                </li>
+                <li><strong>물리적 조치:</strong> Google Cloud Platform의 안전한 데이터센터 활용</li>
+            </ul>
+
+            <h2>10. 개인정보 보호책임자</h2>
+            <div class="contact-info">
+                <p>본 앱은 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.</p>
+                
+                <h3 style="color: #667eea; margin-top: 20px;">개인정보 보호책임자</h3>
+                <p style="margin: 10px 0;"><strong>이메일:</strong> privacy@todaysqt.com</p>
+                <p><strong>문의:</strong> 개인정보 관련 문의사항이 있으시면 위 이메일로 연락 주시기 바랍니다.</p>
+            </div>
+
+            <h2>11. 권익침해 구제방법</h2>
+            <p>정보주체는 개인정보침해로 인한 구제를 받기 위하여 개인정보분쟁조정위원회, 한국인터넷진흥원 개인정보침해신고센터 등에 분쟁해결이나 상담 등을 신청할 수 있습니다.</p>
+
+            <ul>
+                <li><strong>개인정보분쟁조정위원회:</strong> 1833-6972 (www.kopico.go.kr)</li>
+                <li><strong>개인정보침해신고센터:</strong> (국번없이) 118 (privacy.kisa.or.kr)</li>
+                <li><strong>대검찰청:</strong> (국번없이) 1301 (www.spo.go.kr)</li>
+                <li><strong>경찰청:</strong> (국번없이) 182 (ecrm.cyber.go.kr)</li>
+            </ul>
+
+            <h2>12. 개인정보 처리방침의 변경</h2>
+            <p>이 개인정보 처리방침은 2025년 11월 10일부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우에는 변경사항의 시행 7일 전부터 앱 내 공지사항을 통하여 고지할 것입니다.</p>
+
+            <div style="margin-top: 50px; padding-top: 30px; border-top: 1px solid #e2e8f0; text-align: center; color: #718096;">
+                <p><strong>공고일자:</strong> 2025년 11월 10일</p>
+                <p><strong>시행일자:</strong> 2025년 11월 10일</p>
+            </div>
+        </div>
+
+        <!-- English Version -->
+        <div lang="en">
+            <h2>1. Purpose of Processing Personal Information</h2>
+            <p>"Today's QT" (hereinafter referred to as "the App") processes personal information for the following purposes. The personal information being processed will not be used for purposes other than the following. If the purpose of use changes, necessary measures will be taken, including obtaining separate consent in accordance with Article 18 of the Personal Information Protection Act.</p>
+            
+            <ul>
+                <li>Member registration and management (providing email-based membership services)</li>
+                <li>Storage and management of user-created sharing posts and devotional content</li>
+                <li>Service provision and operation</li>
+                <li>Providing customized notification services</li>
+                <li>Service improvement and statistical analysis</li>
+            </ul>
+
+            <h2>2. Personal Information Items Collected</h2>
+            <p>The App collects only the minimum necessary personal information and processes the following information:</p>
+
+            <div class="highlight-box">
+                <h3>📧 Required Collection Items (Upon Registration)</h3>
+                <ul>
+                    <li><strong>Email Address</strong> - For user identification and account management purposes</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Important:</strong> The App does not collect or store passwords. All authentication is securely handled through Firebase Authentication.</p>
+            </div>
+
+            <h3>Automatically Collected Information</h3>
+            <ul>
+                <li>Device information (device model, OS version)</li>
+                <li>App usage records and analytics data (Firebase Analytics)</li>
+                <li>Advertising identifier (for Google AdMob ad serving)</li>
+                <li>Sharing post content (devotional and sharing content created by users)</li>
+            </ul>
+
+            <h2>3. Processing and Retention Period of Personal Information</h2>
+            <p>The App processes and retains personal information within the personal information retention and use period according to laws or the retention and use period agreed upon when collecting personal information from data subjects.</p>
+
+            <div class="info-box">
+                <h3>Processing and Retention Period</h3>
+                <ul>
+                    <li><strong>Email Address:</strong> Until account deletion (deleted immediately upon withdrawal)</li>
+                    <li><strong>Sharing Posts and Devotional Content:</strong> Until account deletion (deleted or anonymized according to user choice upon withdrawal)</li>
+                    <li><strong>App Usage Records:</strong> 3 months from collection date</li>
+                    <li><strong>Advertising-related Data:</strong> According to Google AdMob policy</li>
+                </ul>
+            </div>
+
+            <h2>4. Provision of Personal Information to Third Parties</h2>
+            <p>The App does not provide users' personal information to external parties in principle. However, exceptions are made in the following cases:</p>
+            
+            <ul>
+                <li>When users have given prior consent</li>
+                <li>When required by law or requested by investigative agencies according to procedures and methods defined by law</li>
+            </ul>
+
+            <h2>5. Entrustment of Personal Information Processing</h2>
+            <p>The App entrusts personal information processing tasks as follows to provide smooth services:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Trustee</th>
+                        <th>Entrusted Tasks</th>
+                        <th>Retention and Use Period</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Google Firebase</td>
+                        <td>
+                            - User authentication (Firebase Authentication)<br>
+                            - Data storage (Firestore Database)<br>
+                            - Push notifications (Firebase Cloud Messaging)<br>
+                            - App usage analysis (Firebase Analytics)
+                        </td>
+                        <td>Until account deletion or termination of entrustment contract</td>
+                    </tr>
+                    <tr>
+                        <td>Google AdMob</td>
+                        <td>
+                            - In-app advertising<br>
+                            - Ad performance measurement and analysis
+                        </td>
+                        <td>According to Google AdMob policy</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box">
+                <h3>🔒 Data Security through Firebase</h3>
+                <p>The App securely manages data using Firebase as follows:</p>
+                <ul>
+                    <li><strong>Email addresses</strong> are encrypted and stored in Firebase Authentication</li>
+                    <li><strong>Passwords are not collected or stored by the app</strong> and are securely managed by Firebase</li>
+                    <li><strong>Sharing post data</strong> is encrypted and stored in Firebase Firestore</li>
+                    <li>All data transmission is encrypted via HTTPS</li>
+                </ul>
+            </div>
+
+            <h2>6. Google AdMob Advertising Service</h2>
+            <p>The App provides advertisements through Google AdMob, and the following information may be processed during this process:</p>
+
+            <h3>Information Collected</h3>
+            <ul>
+                <li>Advertising ID</li>
+                <li>Device information and IP address</li>
+                <li>App usage information and ad interaction data</li>
+            </ul>
+
+            <h3>Ad Personalization Settings</h3>
+            <p>Users can opt out of personalized ads in device settings:</p>
+            <ul>
+                <li><strong>Android:</strong> Settings > Google > Ads > Opt out of Ads Personalization</li>
+                <li><strong>iOS:</strong> Settings > Privacy > Tracking > Allow Apps to Request to Track (turn off)</li>
+            </ul>
+
+            <p>For more information about Google's advertising services and privacy practices, please visit:</p>
+            <ul>
+                <li>Google Privacy Policy: <a href="https://policies.google.com/privacy" target="_blank" style="color: #667eea;">https://policies.google.com/privacy</a></li>
+                <li>AdMob and Advertising: <a href="https://support.google.com/admob/answer/6128543" target="_blank" style="color: #667eea;">https://support.google.com/admob/answer/6128543</a></li>
+            </ul>
+
+            <h2>7. Rights and Obligations of Data Subjects and Exercise Methods</h2>
+            <p>Data subjects can exercise the following rights as personal information subjects:</p>
+
+            <ol>
+                <li>Request to view personal information</li>
+                <li>Request correction if there are errors in personal information</li>
+                <li>Request deletion of personal information</li>
+                <li>Request suspension of personal information processing</li>
+            </ol>
+
+            <p>Rights can be exercised directly through the 'Settings > Account Management' menu in the app, or through written documents, email, etc., and the App will take action without delay.</p>
+
+            <h2>8. Destruction of Personal Information</h2>
+            <p>The App destroys personal information without delay when it becomes unnecessary, such as when the retention period has expired or the processing purpose has been achieved.</p>
+
+            <h3>Destruction Procedures and Methods</h3>
+            <ul>
+                <li><strong>Upon Account Deletion:</strong> Email address and related data are immediately deleted from Firebase</li>
+                <li><strong>Data Destruction:</strong> Permanently deleted through Firebase deletion function, making recovery impossible</li>
+                <li><strong>Log Data:</strong> Automatically deleted after 3 months</li>
+            </ul>
+
+            <h2>9. Measures to Ensure Personal Information Security</h2>
+            <p>The App takes the following measures to ensure the security of personal information:</p>
+
+            <ul>
+                <li><strong>Administrative Measures:</strong> Minimization and training of personal information handling staff</li>
+                <li><strong>Technical Measures:</strong>
+                    <ul>
+                        <li>Data access restriction through Firebase Security Rules</li>
+                        <li>Encryption of all data transmission via HTTPS</li>
+                        <li>Secure authentication through Firebase Authentication</li>
+                        <li>Regular security updates and vulnerability checks</li>
+                    </ul>
+                </li>
+                <li><strong>Physical Measures:</strong> Utilization of Google Cloud Platform's secure data centers</li>
+            </ul>
+
+            <h2>10. Privacy Officer</h2>
+            <div class="contact-info">
+                <p>The App has designated a privacy officer as follows to oversee personal information processing tasks and handle complaints and remedy damages related to personal information processing:</p>
+                
+                <h3 style="color: #667eea; margin-top: 20px;">Privacy Officer</h3>
+                <p style="margin: 10px 0;"><strong>Email:</strong> privacy@todaysqt.com</p>
+                <p><strong>Inquiries:</strong> If you have any questions regarding personal information, please contact us via the email above.</p>
+            </div>
+
+            <h2>11. Remedies for Rights Infringement</h2>
+            <p>Data subjects can apply for dispute resolution or consultation to the Personal Information Dispute Mediation Committee, Korea Internet & Security Agency Personal Information Infringement Report Center, etc., to receive remedies for personal information infringement.</p>
+
+            <ul>
+                <li><strong>Personal Information Dispute Mediation Committee:</strong> 1833-6972 (www.kopico.go.kr)</li>
+                <li><strong>Personal Information Infringement Report Center:</strong> (without area code) 118 (privacy.kisa.or.kr)</li>
+                <li><strong>Supreme Prosecutors' Office:</strong> (without area code) 1301 (www.spo.go.kr)</li>
+                <li><strong>National Police Agency:</strong> (without area code) 182 (ecrm.cyber.go.kr)</li>
+            </ul>
+
+            <h2>12. Changes to Privacy Policy</h2>
+            <p>This privacy policy takes effect from November 10, 2025, and if there are additions, deletions, or corrections to changes according to laws and policies, notice will be given through in-app announcements from 7 days before the implementation of changes.</p>
+
+            <div style="margin-top: 50px; padding-top: 30px; border-top: 1px solid #e2e8f0; text-align: center; color: #718096;">
+                <p><strong>Announcement Date:</strong> November 10, 2025</p>
+                <p><strong>Effective Date:</strong> November 10, 2025</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p><a href="index.html" lang="ko" class="active-lang">홈으로 돌아가기</a></p>
+        <p><a href="index.html" lang="en">Back to Home</a></p>
+        <p style="margin-top: 10px;" lang="ko" class="active-lang">&copy; 2025 오늘의큐티. All rights reserved.</p>
+        <p style="margin-top: 10px;" lang="en">&copy; 2025 Today's QT. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function setLanguage(lang) {
+            const koElements = document.querySelectorAll('[lang="ko"]');
+            const enElements = document.querySelectorAll('[lang="en"]');
+            
+            if (lang === 'ko') {
+                koElements.forEach(el => el.classList.add('active-lang'));
+                enElements.forEach(el => el.classList.remove('active-lang'));
+                document.getElementById('btn-ko').classList.add('active');
+                document.getElementById('btn-en').classList.remove('active');
+            } else {
+                enElements.forEach(el => el.classList.add('active-lang'));
+                koElements.forEach(el => el.classList.remove('active-lang'));
+                document.getElementById('btn-en').classList.add('active');
+                document.getElementById('btn-ko').classList.remove('active');
+            }
+            
+            localStorage.setItem('language', lang);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('language') || 'ko';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
