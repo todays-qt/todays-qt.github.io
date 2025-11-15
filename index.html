@@ -53,9 +53,13 @@
             background: #5568d3;
         }
 
-        [lang]:not(.active-lang) {
-            display: none;
-        }
+        .lang-ko { display: none; }
+        .lang-en { display: none; }
+        
+        html[data-lang="ko"] .lang-ko { display: block; }
+        html[data-lang="ko"] .lang-en { display: none; }
+        html[data-lang="en"] .lang-en { display: block; }
+        html[data-lang="en"] .lang-ko { display: none; }
 
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -286,80 +290,80 @@
     </div>
 
     <header class="header">
-        <h1 lang="ko" class="active-lang">📖 오늘의큐티</h1>
-        <h1 lang="en">📖 Today's QT</h1>
+        <h1 class="lang-ko">📖 오늘의큐티</h1>
+        <h1 class="lang-en">📖 Today's QT</h1>
         
-        <p lang="ko" class="active-lang">매일 하나님의 말씀으로 하루를 시작하세요</p>
-        <p lang="en">Start your day with God's Word</p>
+        <p class="lang-ko">매일 하나님의 말씀으로 하루를 시작하세요</p>
+        <p class="lang-en">Start your day with God's Word</p>
     </header>
 
     <section class="section">
         <div class="container">
             <div class="bible-verse">
-                <p class="bible-verse-text" lang="ko" class="active-lang">
+                <p class="bible-verse-text lang-ko">
                     "내가 산을 향하여 눈을 들리라 나의 도움이 어디서 올꼬 나의 도움이 천지를 지으신 여호와에게서로다"
                 </p>
-                <p class="bible-verse-text" lang="en">
+                <p class="bible-verse-text lang-en">
                     "I lift up my eyes to the mountains—where does my help come from? My help comes from the LORD, the Maker of heaven and earth."
                 </p>
-                <p class="bible-verse-reference" lang="ko" class="active-lang">- 시편 121:1-2</p>
-                <p class="bible-verse-reference" lang="en">- Psalm 121:1-2</p>
+                <p class="bible-verse-reference lang-ko">- 시편 121:1-2</p>
+                <p class="bible-verse-reference lang-en">- Psalm 121:1-2</p>
             </div>
         </div>
     </section>
 
     <section class="section">
         <div class="container">
-            <h2 class="section-title" lang="ko" class="active-lang">주요 기능</h2>
-            <h2 class="section-title" lang="en">Key Features</h2>
+            <h2 class="section-title lang-ko">주요 기능</h2>
+            <h2 class="section-title lang-en">Key Features</h2>
             
             <div class="features">
                 <div class="feature-card">
                     <div class="feature-icon">📅</div>
-                    <h3 lang="ko" class="active-lang">매일의 말씀</h3>
-                    <h3 lang="en">Daily Scripture</h3>
-                    <p lang="ko" class="active-lang">매일 새로운 성경 구절과 묵상을 통해 영적 성장을 경험하세요</p>
-                    <p lang="en">Experience spiritual growth through daily Bible verses and devotions</p>
+                    <h3 class="lang-ko">매일의 말씀</h3>
+                    <h3 class="lang-en">Daily Scripture</h3>
+                    <p class="lang-ko">매일 새로운 성경 구절과 묵상을 통해 영적 성장을 경험하세요</p>
+                    <p class="lang-en">Experience spiritual growth through daily Bible verses and devotions</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">✍️</div>
-                    <h3 lang="ko" class="active-lang">나눔글 저장</h3>
-                    <h3 lang="en">Save & Share</h3>
-                    <p lang="ko" class="active-lang">당신의 묵상과 나눔글을 작성하고 저장하여 신앙의 여정을 기록하세요</p>
-                    <p lang="en">Write and save your reflections to document your faith journey</p>
+                    <h3 class="lang-ko">나눔글 저장</h3>
+                    <h3 class="lang-en">Save & Share</h3>
+                    <p class="lang-ko">당신의 묵상과 나눔글을 작성하고 저장하여 신앙의 여정을 기록하세요</p>
+                    <p class="lang-en">Write and save your reflections to document your faith journey</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">🔔</div>
-                    <h3 lang="ko" class="active-lang">알림 기능</h3>
-                    <h3 lang="en">Notifications</h3>
-                    <p lang="ko" class="active-lang">원하는 시간에 말씀 알림을 받아 규칙적인 경건의 시간을 가지세요</p>
-                    <p lang="en">Receive word reminders at your preferred time for regular devotion</p>
+                    <h3 class="lang-ko">알림 기능</h3>
+                    <h3 class="lang-en">Notifications</h3>
+                    <p class="lang-ko">원하는 시간에 말씀 알림을 받아 규칙적인 경건의 시간을 가지세요</p>
+                    <p class="lang-en">Receive word reminders at your preferred time for regular devotion</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">👤</div>
-                    <h3 lang="ko" class="active-lang">간편한 회원가입</h3>
-                    <h3 lang="en">Easy Sign-up</h3>
-                    <p lang="ko" class="active-lang">이메일만으로 간편하게 가입하고 모든 기기에서 동기화하세요</p>
-                    <p lang="en">Simple sign-up with email and sync across all your devices</p>
+                    <h3 class="lang-ko">간편한 회원가입</h3>
+                    <h3 class="lang-en">Easy Sign-up</h3>
+                    <p class="lang-ko">이메일만으로 간편하게 가입하고 모든 기기에서 동기화하세요</p>
+                    <p class="lang-en">Simple sign-up with email and sync across all your devices</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">☁️</div>
-                    <h3 lang="ko" class="active-lang">클라우드 저장</h3>
-                    <h3 lang="en">Cloud Storage</h3>
-                    <p lang="ko" class="active-lang">Firebase를 통해 안전하게 데이터를 저장하고 언제 어디서나 접근하세요</p>
-                    <p lang="en">Securely store data via Firebase and access from anywhere</p>
+                    <h3 class="lang-ko">클라우드 저장</h3>
+                    <h3 class="lang-en">Cloud Storage</h3>
+                    <p class="lang-ko">안전하게 데이터를 저장하고 언제 어디서나 접근하세요</p>
+                    <p class="lang-en">Securely store data and access from anywhere</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">📱</div>
-                    <h3 lang="ko" class="active-lang">깔끔한 인터페이스</h3>
-                    <h3 lang="en">Clean Interface</h3>
-                    <p lang="ko" class="active-lang">직관적이고 아름다운 디자인으로 편안한 경건의 시간을 보내세요</p>
-                    <p lang="en">Enjoy peaceful devotion time with intuitive and beautiful design</p>
+                    <h3 class="lang-ko">깔끔한 인터페이스</h3>
+                    <h3 class="lang-en">Clean Interface</h3>
+                    <p class="lang-ko">직관적이고 아름다운 디자인으로 편안한 경건의 시간을 보내세요</p>
+                    <p class="lang-en">Enjoy peaceful devotion time with intuitive and beautiful design</p>
                 </div>
             </div>
         </div>
@@ -367,24 +371,24 @@
 
     <section class="section screenshot-section">
         <div class="container">
-            <h2 class="section-title" lang="ko" class="active-lang">앱 미리보기</h2>
-            <h2 class="section-title" lang="en">App Preview</h2>
+            <h2 class="section-title lang-ko">앱 미리보기</h2>
+            <h2 class="section-title lang-en">App Preview</h2>
             
             <div class="screenshot-container">
                 <div style="text-align: center;">
-                    <p style="margin-bottom: 20px; color: #666;" lang="ko" class="active-lang">매일 하나님의 말씀으로 시작하는 하루</p>
-                    <p style="margin-bottom: 20px; color: #666;" lang="en">Start your day with God's Word</p>
+                    <p style="margin-bottom: 20px; color: #666;" class="lang-ko">매일 하나님의 말씀으로 시작하는 하루</p>
+                    <p style="margin-bottom: 20px; color: #666;" class="lang-en">Start your day with God's Word</p>
                     
                     <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; border-radius: 20px; max-width: 320px; margin: 0 auto;">
                         <div style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-                            <p style="font-size: 1.1rem; color: #2d3748; font-style: italic; line-height: 1.8; margin-bottom: 15px;" lang="ko" class="active-lang">
+                            <p style="font-size: 1.1rem; color: #2d3748; font-style: italic; line-height: 1.8; margin-bottom: 15px;" class="lang-ko">
                                 "내가 산을 향하여 눈을 들리라..."
                             </p>
-                            <p style="font-size: 1.1rem; color: #2d3748; font-style: italic; line-height: 1.8; margin-bottom: 15px;" lang="en">
+                            <p style="font-size: 1.1rem; color: #2d3748; font-style: italic; line-height: 1.8; margin-bottom: 15px;" class="lang-en">
                                 "I lift up my eyes to the mountains..."
                             </p>
-                            <p style="text-align: right; color: #667eea; font-weight: 600;" lang="ko" class="active-lang">시편 121:1-2</p>
-                            <p style="text-align: right; color: #667eea; font-weight: 600;" lang="en">Psalm 121:1-2</p>
+                            <p style="text-align: right; color: #667eea; font-weight: 600;" class="lang-ko">시편 121:1-2</p>
+                            <p style="text-align: right; color: #667eea; font-weight: 600;" class="lang-en">Psalm 121:1-2</p>
                         </div>
                     </div>
                 </div>
@@ -394,11 +398,11 @@
 
     <section class="cta-section">
         <div class="container">
-            <h2 lang="ko" class="active-lang">지금 바로 시작하세요</h2>
-            <h2 lang="en">Get Started Now</h2>
+            <h2 class="lang-ko">지금 바로 시작하세요</h2>
+            <h2 class="lang-en">Get Started Now</h2>
             
-            <p lang="ko" class="active-lang">매일 하나님의 말씀과 함께하는 은혜로운 하루를 경험해보세요</p>
-            <p lang="en">Experience a blessed day with God's Word every day</p>
+            <p class="lang-ko">매일 하나님의 말씀과 함께하는 은혜로운 하루를 경험해보세요</p>
+            <p class="lang-en">Experience a blessed day with God's Word every day</p>
             
             <div class="download-buttons">
                 <a href="#" class="btn">🍎 App Store</a>
@@ -409,38 +413,29 @@
 
     <footer class="footer">
         <div class="footer-links">
-            <a href="privacy.html" lang="ko" class="active-lang">개인정보처리방침</a>
-            <a href="privacy.html" lang="en">Privacy Policy</a>
-            <a href="mailto:support@todaysqt.com" lang="ko" class="active-lang">문의하기</a>
-            <a href="mailto:support@todaysqt.com" lang="en">Contact</a>
+            <a href="privacy.html" class="lang-ko">개인정보처리방침</a>
+            <a href="privacy.html" class="lang-en">Privacy Policy</a>
+            <a href="mailto:support@todaysqt.com" class="lang-ko">문의하기</a>
+            <a href="mailto:support@todaysqt.com" class="lang-en">Contact</a>
         </div>
-        <p lang="ko" class="active-lang">&copy; 2025 오늘의큐티. All rights reserved.</p>
-        <p lang="en">&copy; 2025 Today's QT. All rights reserved.</p>
+        <p class="lang-ko">&copy; 2025 오늘의큐티. All rights reserved.</p>
+        <p class="lang-en">&copy; 2025 Today's QT. All rights reserved.</p>
     </footer>
 
     <script>
         function setLanguage(lang) {
-            // Update all elements
-            const koElements = document.querySelectorAll('[lang="ko"]');
-            const enElements = document.querySelectorAll('[lang="en"]');
+            // Set data attribute on html element
+            document.documentElement.setAttribute('data-lang', lang);
             
-            if (lang === 'ko') {
-                koElements.forEach(el => el.classList.add('active-lang'));
-                enElements.forEach(el => el.classList.remove('active-lang'));
-                document.getElementById('btn-ko').classList.add('active');
-                document.getElementById('btn-en').classList.remove('active');
-            } else {
-                enElements.forEach(el => el.classList.add('active-lang'));
-                koElements.forEach(el => el.classList.remove('active-lang'));
-                document.getElementById('btn-en').classList.add('active');
-                document.getElementById('btn-ko').classList.remove('active');
-            }
+            // Update button states
+            document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
             
             // Save preference
             localStorage.setItem('language', lang);
         }
 
-        // Load saved language preference
+        // Load saved language preference on page load
         window.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('language') || 'ko';
             setLanguage(savedLang);
