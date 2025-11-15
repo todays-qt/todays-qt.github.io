@@ -272,12 +272,13 @@
             <p>본 앱은 최소한의 개인정보만을 수집하며, 다음과 같은 정보를 처리하고 있습니다:</p>
 
             <div class="highlight-box">
-                <h3>🔐 인증 정보 (Firebase에서 관리)</h3>
+                <h3>🔐 소셜 로그인 정보 (Firebase에서 관리)</h3>
                 <ul>
-                    <li><strong>이메일 주소</strong> - Firebase Authentication에서 관리 (본 앱 서버에는 저장되지 않음)</li>
-                    <li><strong>비밀번호</strong> - Firebase Authentication에서 암호화 저장 (본 앱 서버에는 저장되지 않음)</li>
+                    <li><strong>이메일 주소</strong> - 소셜 로그인 제공자(구글, 애플, 카카오톡)로부터 수신하여 Firebase Authentication에서 관리</li>
+                    <li><strong>소셜 로그인 제공자 정보</strong> - 어떤 서비스(구글/애플/카카오톡)로 로그인했는지에 대한 정보</li>
+                    <li><strong>프로필 정보</strong> - 소셜 로그인 제공자가 제공하는 기본 프로필 정보 (이름 등, 선택적)</li>
                 </ul>
-                <p style="margin-top: 15px;"><strong>중요:</strong> 본 앱은 이메일 주소와 비밀번호를 서버에 수집하거나 저장하지 않습니다. 모든 인증 정보는 Firebase Authentication을 통해 안전하게 관리됩니다.</p>
+                <p style="margin-top: 15px;"><strong>중요:</strong> 본 앱은 비밀번호를 수집하거나 저장하지 않습니다. 구글, 애플, 카카오톡 계정으로 간편하게 로그인하며, 모든 인증은 각 소셜 로그인 제공자와 Firebase Authentication을 통해 안전하게 처리됩니다. 이메일 주소와 인증 정보는 본 앱 서버에 저장되지 않습니다.</p>
             </div>
 
             <h3>📝 앱 서버에 저장되는 정보</h3>
@@ -336,9 +337,9 @@
                             <td>회원 인증 및 계정 관리</td>
                         </tr>
                         <tr>
-                            <td><strong>비밀번호</strong></td>
-                            <td>Firebase Authentication (암호화)</td>
-                            <td>회원 인증</td>
+                            <td><strong>소셜 로그인 정보</strong></td>
+                            <td>Firebase Authentication</td>
+                            <td>구글/애플/카카오톡 계정 연동 및 인증</td>
                         </tr>
                         <tr>
                             <td><strong>Firebase UID</strong></td>
@@ -379,15 +380,48 @@
                     <tr>
                         <td>Google Firebase</td>
                         <td>
-                            - 회원 인증 (Firebase Authentication)<br>
+                            - 소셜 로그인 인증 (Firebase Authentication)<br>
                             - 푸시 알림 (Firebase Cloud Messaging)<br>
                             - 앱 사용 분석 (Firebase Analytics)
                         </td>
                         <td>
-                            - 이메일 주소 (암호화)<br>
-                            - 비밀번호 (암호화)<br>
+                            - 이메일 주소<br>
+                            - 소셜 로그인 제공자 정보<br>
                             - 기기 정보<br>
                             - 앱 사용 기록
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Google (구글 로그인)</td>
+                        <td>
+                            - 구글 계정 인증<br>
+                            - 기본 프로필 정보 제공
+                        </td>
+                        <td>
+                            - 구글 계정 이메일<br>
+                            - 프로필 정보 (선택적)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Apple (애플 로그인)</td>
+                        <td>
+                            - 애플 계정 인증<br>
+                            - 기본 프로필 정보 제공
+                        </td>
+                        <td>
+                            - 애플 계정 이메일<br>
+                            - 프로필 정보 (선택적)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kakao (카카오톡 로그인)</td>
+                        <td>
+                            - 카카오 계정 인증<br>
+                            - 기본 프로필 정보 제공
+                        </td>
+                        <td>
+                            - 카카오 계정 이메일<br>
+                            - 프로필 정보 (선택적)
                         </td>
                     </tr>
                     <tr>
@@ -407,11 +441,12 @@
 
             <div class="info-box">
                 <h3>🔒 데이터 보안 및 관리</h3>
-                <p><strong>Firebase Authentication:</strong></p>
+                <p><strong>소셜 로그인 (구글, 애플, 카카오톡):</strong></p>
                 <ul>
-                    <li>이메일 주소와 비밀번호는 Firebase에서 암호화되어 안전하게 저장됩니다</li>
-                    <li>앱 서버에는 이메일과 비밀번호가 저장되지 않습니다</li>
-                    <li>Firebase UID만 앱 서버에 저장되어 사용자를 식별합니다</li>
+                    <li>각 소셜 로그인 제공자가 인증을 직접 처리합니다</li>
+                    <li>본 앱은 비밀번호를 수집하거나 저장하지 않습니다</li>
+                    <li>이메일 주소는 Firebase Authentication에서 안전하게 관리됩니다</li>
+                    <li>앱 서버에는 이메일이 저장되지 않으며, Firebase UID만 저장됩니다</li>
                 </ul>
                 <p style="margin-top: 15px;"><strong>앱 서버:</strong></p>
                 <ul>
@@ -464,7 +499,8 @@
                 <li><strong>회원 탈퇴 시:</strong>
                     <ul>
                         <li>Firebase UID 및 나눔글 데이터는 즉시 앱 서버에서 삭제됩니다</li>
-                        <li>이메일 주소 및 인증 정보는 Firebase에서 삭제됩니다</li>
+                        <li>이메일 주소 및 소셜 로그인 연동 정보는 Firebase에서 삭제됩니다</li>
+                        <li>구글, 애플, 카카오톡 계정 자체는 각 서비스 제공자가 관리하므로 삭제되지 않습니다</li>
                     </ul>
                 </li>
                 <li><strong>데이터 파기:</strong> 복구 불가능하게 영구 삭제됩니다</li>
@@ -557,12 +593,13 @@
             <p>The App collects only the minimum necessary personal information and processes the following information:</p>
 
             <div class="highlight-box">
-                <h3>🔐 Authentication Information (Managed by Firebase)</h3>
+                <h3>🔐 Social Login Information (Managed by Firebase)</h3>
                 <ul>
-                    <li><strong>Email Address</strong> - Managed by Firebase Authentication (NOT stored on app server)</li>
-                    <li><strong>Password</strong> - Encrypted and stored in Firebase Authentication (NOT stored on app server)</li>
+                    <li><strong>Email Address</strong> - Received from social login providers (Google, Apple, Kakao) and managed by Firebase Authentication</li>
+                    <li><strong>Social Login Provider Information</strong> - Information about which service (Google/Apple/Kakao) was used for login</li>
+                    <li><strong>Profile Information</strong> - Basic profile information provided by social login providers (name, etc., optional)</li>
                 </ul>
-                <p style="margin-top: 15px;"><strong>Important:</strong> The App does not collect or store email addresses and passwords on its server. All authentication information is securely managed through Firebase Authentication.</p>
+                <p style="margin-top: 15px;"><strong>Important:</strong> The App does not collect or store passwords. Users log in conveniently with their Google, Apple, or Kakao accounts, and all authentication is securely handled through each social login provider and Firebase Authentication. Email addresses and authentication information are NOT stored on the app server.</p>
             </div>
 
             <h3>📝 Information Stored on App Server</h3>
@@ -621,9 +658,9 @@
                             <td>User authentication and account management</td>
                         </tr>
                         <tr>
-                            <td><strong>Password</strong></td>
-                            <td>Firebase Authentication (encrypted)</td>
-                            <td>User authentication</td>
+                            <td><strong>Social Login Information</strong></td>
+                            <td>Firebase Authentication</td>
+                            <td>Google/Apple/Kakao account integration and authentication</td>
                         </tr>
                         <tr>
                             <td><strong>Firebase UID</strong></td>
@@ -664,15 +701,48 @@
                     <tr>
                         <td>Google Firebase</td>
                         <td>
-                            - User authentication (Firebase Authentication)<br>
+                            - Social login authentication (Firebase Authentication)<br>
                             - Push notifications (Firebase Cloud Messaging)<br>
                             - App usage analysis (Firebase Analytics)
                         </td>
                         <td>
-                            - Email address (encrypted)<br>
-                            - Password (encrypted)<br>
+                            - Email address<br>
+                            - Social login provider information<br>
                             - Device information<br>
                             - App usage records
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Google (Google Sign-In)</td>
+                        <td>
+                            - Google account authentication<br>
+                            - Provision of basic profile information
+                        </td>
+                        <td>
+                            - Google account email<br>
+                            - Profile information (optional)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Apple (Sign in with Apple)</td>
+                        <td>
+                            - Apple account authentication<br>
+                            - Provision of basic profile information
+                        </td>
+                        <td>
+                            - Apple account email<br>
+                            - Profile information (optional)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kakao (Kakao Login)</td>
+                        <td>
+                            - Kakao account authentication<br>
+                            - Provision of basic profile information
+                        </td>
+                        <td>
+                            - Kakao account email<br>
+                            - Profile information (optional)
                         </td>
                     </tr>
                     <tr>
@@ -692,11 +762,12 @@
 
             <div class="info-box">
                 <h3>🔒 Data Security and Management</h3>
-                <p><strong>Firebase Authentication:</strong></p>
+                <p><strong>Social Login (Google, Apple, Kakao):</strong></p>
                 <ul>
-                    <li>Email addresses and passwords are encrypted and securely stored in Firebase</li>
-                    <li>Email and password are NOT stored on the app server</li>
-                    <li>Only Firebase UID is stored on the app server to identify users</li>
+                    <li>Each social login provider directly handles authentication</li>
+                    <li>The App does not collect or store passwords</li>
+                    <li>Email addresses are securely managed in Firebase Authentication</li>
+                    <li>Email is NOT stored on the app server; only Firebase UID is stored</li>
                 </ul>
                 <p style="margin-top: 15px;"><strong>App Server:</strong></p>
                 <ul>
@@ -749,7 +820,8 @@
                 <li><strong>Upon Account Deletion:</strong>
                     <ul>
                         <li>Firebase UID and sharing post data are immediately deleted from the app server</li>
-                        <li>Email address and authentication information are deleted from Firebase</li>
+                        <li>Email address and social login integration information are deleted from Firebase</li>
+                        <li>Google, Apple, and Kakao accounts themselves are managed by each service provider and are not deleted</li>
                     </ul>
                 </li>
                 <li><strong>Data Destruction:</strong> Permanently deleted, making recovery impossible</li>
