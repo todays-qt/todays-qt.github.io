@@ -54,9 +54,13 @@
             background: #5568d3;
         }
 
-        [lang]:not(.active-lang) {
-            display: none;
-        }
+        .lang-ko { display: none; }
+        .lang-en { display: none; }
+        
+        html[data-lang="ko"] .lang-ko { display: block; }
+        html[data-lang="ko"] .lang-en { display: none; }
+        html[data-lang="en"] .lang-en { display: block; }
+        html[data-lang="en"] .lang-ko { display: none; }
 
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -240,24 +244,24 @@
     </div>
 
     <header class="header">
-        <h1 lang="ko" class="active-lang">개인정보처리방침</h1>
-        <h1 lang="en">Privacy Policy</h1>
+        <h1 class="lang-ko">개인정보처리방침</h1>
+        <h1 class="lang-en">Privacy Policy</h1>
         
-        <p lang="ko" class="active-lang">최종 업데이트: 2025년 11월 10일</p>
-        <p lang="en">Last Updated: November 10, 2025</p>
+        <p class="lang-ko">최종 업데이트: 2025년 11월 10일</p>
+        <p class="lang-en">Last Updated: November 10, 2025</p>
     </header>
 
     <div class="container">
-        <a href="index.html" class="back-link" lang="ko" class="active-lang">← 홈으로 돌아가기</a>
-        <a href="index.html" class="back-link" lang="en">← Back to Home</a>
+        <a href="index.html" class="back-link lang-ko">← 홈으로 돌아가기</a>
+        <a href="index.html" class="back-link lang-en">← Back to Home</a>
 
         <!-- Korean Version -->
-        <div lang="ko" class="active-lang">
+        <div class="lang-ko">
             <h2>1. 개인정보의 처리 목적</h2>
-            <p>"오늘의큐티" (이하 "본 앱")은 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 「개인정보 보호법」 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.</p>
+            <p>"오늘의큐티" (이하 "본 앱")은 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 관련 법령에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.</p>
             
             <ul>
-                <li>회원 가입 및 관리 (이메일 기반 회원제 서비스 제공)</li>
+                <li>회원 가입 및 관리 (Firebase 기반 회원제 서비스 제공)</li>
                 <li>사용자가 작성한 나눔글 및 묵상 내용 저장 및 관리</li>
                 <li>서비스 제공 및 운영</li>
                 <li>사용자 맞춤형 알림 서비스 제공</li>
@@ -268,19 +272,26 @@
             <p>본 앱은 최소한의 개인정보만을 수집하며, 다음과 같은 정보를 처리하고 있습니다:</p>
 
             <div class="highlight-box">
-                <h3>📧 필수 수집 항목 (회원가입 시)</h3>
+                <h3>🔐 인증 정보 (Firebase에서 관리)</h3>
                 <ul>
-                    <li><strong>이메일 주소</strong> - 회원 식별 및 계정 관리 목적</li>
+                    <li><strong>이메일 주소</strong> - Firebase Authentication에서 관리 (본 앱 서버에는 저장되지 않음)</li>
+                    <li><strong>비밀번호</strong> - Firebase Authentication에서 암호화 저장 (본 앱 서버에는 저장되지 않음)</li>
                 </ul>
-                <p style="margin-top: 15px;"><strong>중요:</strong> 본 앱은 비밀번호를 수집하거나 저장하지 않습니다. 모든 인증은 Firebase Authentication을 통해 안전하게 처리됩니다.</p>
+                <p style="margin-top: 15px;"><strong>중요:</strong> 본 앱은 이메일 주소와 비밀번호를 서버에 수집하거나 저장하지 않습니다. 모든 인증 정보는 Firebase Authentication을 통해 안전하게 관리됩니다.</p>
             </div>
 
-            <h3>자동으로 수집되는 정보</h3>
+            <h3>📝 앱 서버에 저장되는 정보</h3>
+            <ul>
+                <li><strong>Firebase 사용자 ID (UID)</strong> - 회원 식별 및 데이터 연결 목적으로만 사용</li>
+                <li><strong>나눔글 및 묵상 내용</strong> - 사용자가 직접 작성한 텍스트 콘텐츠</li>
+                <li><strong>작성 일시</strong> - 나눔글 관리 및 표시 목적</li>
+            </ul>
+
+            <h3>🔍 자동으로 수집되는 정보</h3>
             <ul>
                 <li>기기 정보 (기기 모델, OS 버전)</li>
                 <li>앱 사용 기록 및 분석 데이터 (Firebase Analytics)</li>
                 <li>광고 식별자 (Google AdMob 광고 제공을 위해)</li>
-                <li>나눔글 작성 내용 (사용자가 직접 작성한 묵상 및 나눔 내용)</li>
             </ul>
 
             <h2>3. 개인정보의 처리 및 보유기간</h2>
@@ -289,8 +300,9 @@
             <div class="info-box">
                 <h3>처리 및 보유기간</h3>
                 <ul>
-                    <li><strong>이메일 주소:</strong> 회원 탈퇴 시까지 (탈퇴 즉시 삭제)</li>
+                    <li><strong>Firebase UID:</strong> 회원 탈퇴 시까지 (탈퇴 즉시 앱 서버에서 삭제)</li>
                     <li><strong>나눔글 및 묵상 내용:</strong> 회원 탈퇴 시까지 (탈퇴 시 사용자 선택에 따라 삭제 또는 익명 처리)</li>
+                    <li><strong>이메일 주소 (Firebase):</strong> 회원 탈퇴 시까지 (Firebase에서 관리)</li>
                     <li><strong>앱 사용 기록:</strong> 수집일로부터 3개월</li>
                     <li><strong>광고 관련 데이터:</strong> Google AdMob 정책에 따름</li>
                 </ul>
@@ -304,7 +316,55 @@
                 <li>법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우</li>
             </ul>
 
-            <h2>5. 개인정보처리의 위탁</h2>
+            <h2>5. 개인정보처리 및 저장 위치</h2>
+            <p>본 앱은 서비스 제공을 위해 다음과 같이 개인정보를 처리하고 저장합니다:</p>
+
+            <div class="info-box">
+                <h3>📍 데이터 저장 위치</h3>
+                <table style="width: 100%; margin-top: 15px;">
+                    <thead>
+                        <tr>
+                            <th>데이터 유형</th>
+                            <th>저장 위치</th>
+                            <th>목적</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>이메일 주소</strong></td>
+                            <td>Firebase Authentication</td>
+                            <td>회원 인증 및 계정 관리</td>
+                        </tr>
+                        <tr>
+                            <td><strong>비밀번호</strong></td>
+                            <td>Firebase Authentication (암호화)</td>
+                            <td>회원 인증</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Firebase UID</strong></td>
+                            <td>앱 서버 데이터베이스</td>
+                            <td>회원 식별 및 데이터 연결</td>
+                        </tr>
+                        <tr>
+                            <td><strong>나눔글 및 묵상 내용</strong></td>
+                            <td>앱 서버 데이터베이스</td>
+                            <td>사용자 콘텐츠 저장 및 제공</td>
+                        </tr>
+                        <tr>
+                            <td><strong>앱 사용 분석 데이터</strong></td>
+                            <td>Firebase Analytics</td>
+                            <td>서비스 개선 및 통계 분석</td>
+                        </tr>
+                        <tr>
+                            <td><strong>광고 관련 데이터</strong></td>
+                            <td>Google AdMob</td>
+                            <td>광고 제공 및 성과 측정</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>6. 개인정보처리의 위탁</h2>
             <p>본 앱은 원활한 서비스 제공을 위해 다음과 같이 개인정보 처리업무를 위탁하고 있습니다:</p>
 
             <table>
@@ -312,7 +372,7 @@
                     <tr>
                         <th>수탁업체</th>
                         <th>위탁업무 내용</th>
-                        <th>개인정보 보유 및 이용기간</th>
+                        <th>처리 데이터</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -320,11 +380,15 @@
                         <td>Google Firebase</td>
                         <td>
                             - 회원 인증 (Firebase Authentication)<br>
-                            - 데이터 저장 (Firestore Database)<br>
                             - 푸시 알림 (Firebase Cloud Messaging)<br>
                             - 앱 사용 분석 (Firebase Analytics)
                         </td>
-                        <td>회원 탈퇴 시 또는 위탁 계약 종료 시까지</td>
+                        <td>
+                            - 이메일 주소 (암호화)<br>
+                            - 비밀번호 (암호화)<br>
+                            - 기기 정보<br>
+                            - 앱 사용 기록
+                        </td>
                     </tr>
                     <tr>
                         <td>Google AdMob</td>
@@ -332,23 +396,32 @@
                             - 앱 내 광고 게재<br>
                             - 광고 성과 측정 및 분석
                         </td>
-                        <td>Google AdMob 정책에 따름</td>
+                        <td>
+                            - 광고 식별자<br>
+                            - 기기 정보<br>
+                            - IP 주소
+                        </td>
                     </tr>
                 </tbody>
             </table>
 
             <div class="info-box">
-                <h3>🔒 Firebase를 통한 데이터 보안</h3>
-                <p>본 앱은 Firebase를 사용하여 다음과 같이 데이터를 안전하게 관리합니다:</p>
+                <h3>🔒 데이터 보안 및 관리</h3>
+                <p><strong>Firebase Authentication:</strong></p>
                 <ul>
-                    <li><strong>이메일 주소</strong>는 Firebase Authentication에서 암호화되어 저장됩니다</li>
-                    <li><strong>비밀번호는 앱에서 수집하거나 저장하지 않으며</strong>, Firebase가 안전하게 관리합니다</li>
-                    <li><strong>나눔글 데이터</strong>는 Firebase Firestore에 암호화되어 저장됩니다</li>
+                    <li>이메일 주소와 비밀번호는 Firebase에서 암호화되어 안전하게 저장됩니다</li>
+                    <li>앱 서버에는 이메일과 비밀번호가 저장되지 않습니다</li>
+                    <li>Firebase UID만 앱 서버에 저장되어 사용자를 식별합니다</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>앱 서버:</strong></p>
+                <ul>
+                    <li>Firebase UID와 사용자가 작성한 나눔글만 저장됩니다</li>
                     <li>모든 데이터 전송은 HTTPS를 통해 암호화됩니다</li>
+                    <li>정기적인 보안 업데이트 및 백업이 수행됩니다</li>
                 </ul>
             </div>
 
-            <h2>6. Google AdMob 광고 서비스</h2>
+            <h2>7. Google AdMob 광고 서비스</h2>
             <p>본 앱은 Google AdMob을 통해 광고를 제공하며, 이 과정에서 다음과 같은 정보가 처리될 수 있습니다:</p>
 
             <h3>수집되는 정보</h3>
@@ -365,13 +438,13 @@
                 <li><strong>iOS:</strong> 설정 > 개인정보 보호 > 추적 > 앱이 추적을 요청하도록 허용 끄기</li>
             </ul>
 
-            <p>Google의 광고 서비스 및 개인정보 처리에 대한 자세한 내용은 다음 링크에서 확인하실 수 있습니다:</p>
+            <p>Google의 광고 서비스 및 개인정보 처리에 대한 자세한 내용:</p>
             <ul>
                 <li>Google 개인정보처리방침: <a href="https://policies.google.com/privacy" target="_blank" style="color: #667eea;">https://policies.google.com/privacy</a></li>
                 <li>AdMob 및 광고: <a href="https://support.google.com/admob/answer/6128543" target="_blank" style="color: #667eea;">https://support.google.com/admob/answer/6128543</a></li>
             </ul>
 
-            <h2>7. 정보주체의 권리·의무 및 행사방법</h2>
+            <h2>8. 정보주체의 권리·의무 및 행사방법</h2>
             <p>정보주체는 개인정보주체로서 다음과 같은 권리를 행사할 수 있습니다:</p>
 
             <ol>
@@ -381,35 +454,49 @@
                 <li>개인정보 처리정지 요구</li>
             </ol>
 
-            <p>권리 행사는 앱 내 '설정 > 계정 관리' 메뉴를 통해 직접 하실 수 있으며, 서면, 전자우편 등을 통하여 하실 수 있고 본 앱은 이에 대해 지체없이 조치하겠습니다.</p>
+            <p>권리 행사는 앱 내 '설정 > 계정 관리' 메뉴를 통해 직접 하실 수 있으며, 이메일 등을 통하여 하실 수 있고 본 앱은 이에 대해 지체없이 조치하겠습니다.</p>
 
-            <h2>8. 개인정보의 파기</h2>
+            <h2>9. 개인정보의 파기</h2>
             <p>본 앱은 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체없이 해당 개인정보를 파기합니다.</p>
 
             <h3>파기절차 및 방법</h3>
             <ul>
-                <li><strong>회원 탈퇴 시:</strong> 이메일 주소 및 관련 데이터는 즉시 Firebase에서 삭제됩니다</li>
-                <li><strong>데이터 파기:</strong> Firebase의 삭제 기능을 통해 복구 불가능하게 영구 삭제됩니다</li>
+                <li><strong>회원 탈퇴 시:</strong>
+                    <ul>
+                        <li>Firebase UID 및 나눔글 데이터는 즉시 앱 서버에서 삭제됩니다</li>
+                        <li>이메일 주소 및 인증 정보는 Firebase에서 삭제됩니다</li>
+                    </ul>
+                </li>
+                <li><strong>데이터 파기:</strong> 복구 불가능하게 영구 삭제됩니다</li>
                 <li><strong>로그 데이터:</strong> 3개월 후 자동으로 삭제됩니다</li>
             </ul>
 
-            <h2>9. 개인정보의 안전성 확보조치</h2>
+            <h2>10. 개인정보의 안전성 확보조치</h2>
             <p>본 앱은 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고 있습니다:</p>
 
             <ul>
                 <li><strong>관리적 조치:</strong> 개인정보 취급 직원의 최소화 및 교육</li>
                 <li><strong>기술적 조치:</strong> 
                     <ul>
-                        <li>Firebase Security Rules를 통한 데이터 접근 제한</li>
-                        <li>HTTPS를 통한 모든 데이터 전송 암호화</li>
                         <li>Firebase Authentication을 통한 안전한 인증</li>
+                        <li>HTTPS를 통한 모든 데이터 전송 암호화</li>
+                        <li>서버 접근 제어 및 권한 관리</li>
                         <li>정기적인 보안 업데이트 및 취약점 점검</li>
                     </ul>
                 </li>
-                <li><strong>물리적 조치:</strong> Google Cloud Platform의 안전한 데이터센터 활용</li>
+                <li><strong>물리적 조치:</strong> 안전한 데이터센터 활용 및 접근 통제</li>
             </ul>
 
-            <h2>10. 개인정보 보호책임자</h2>
+            <h2>11. 국제적 데이터 전송</h2>
+            <p>본 앱은 글로벌 서비스를 제공하기 위해 사용자의 데이터가 국경을 넘어 전송될 수 있습니다:</p>
+            <ul>
+                <li>Firebase 및 Google 서비스는 전 세계 데이터센터를 사용합니다</li>
+                <li>모든 데이터 전송은 적절한 보안 조치와 함께 이루어집니다</li>
+                <li>귀하의 거주 국가의 데이터 보호법이 적용될 수 있습니다</li>
+                <li>데이터는 Google의 글로벌 인프라를 통해 처리되며, 해당 지역의 법률을 준수합니다</li>
+            </ul>
+
+            <h2>12. 개인정보 보호책임자</h2>
             <div class="contact-info">
                 <p>본 앱은 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.</p>
                 
@@ -418,17 +505,33 @@
                 <p><strong>문의:</strong> 개인정보 관련 문의사항이 있으시면 위 이메일로 연락 주시기 바랍니다.</p>
             </div>
 
-            <h2>11. 권익침해 구제방법</h2>
-            <p>정보주체는 개인정보침해로 인한 구제를 받기 위하여 개인정보분쟁조정위원회, 한국인터넷진흥원 개인정보침해신고센터 등에 분쟁해결이나 상담 등을 신청할 수 있습니다.</p>
-
+            <h2>13. 지역별 추가 정보</h2>
+            <p>귀하의 거주 지역에 따라 추가적인 개인정보 보호 권리가 적용될 수 있습니다:</p>
+            
+            <h3>한국 거주자</h3>
+            <p>개인정보침해로 인한 구제를 받기 위하여 다음 기관에 분쟁해결이나 상담을 신청할 수 있습니다:</p>
             <ul>
-                <li><strong>개인정보분쟁조정위원회:</strong> 1833-6972 (www.kopico.go.kr)</li>
-                <li><strong>개인정보침해신고센터:</strong> (국번없이) 118 (privacy.kisa.or.kr)</li>
-                <li><strong>대검찰청:</strong> (국번없이) 1301 (www.spo.go.kr)</li>
-                <li><strong>경찰청:</strong> (국번없이) 182 (ecrm.cyber.go.kr)</li>
+                <li>개인정보분쟁조정위원회: 1833-6972 (www.kopico.go.kr)</li>
+                <li>개인정보침해신고센터: (국번없이) 118 (privacy.kisa.or.kr)</li>
             </ul>
 
-            <h2>12. 개인정보 처리방침의 변경</h2>
+            <h3>유럽연합(EU) 거주자 (GDPR)</h3>
+            <p>GDPR에 따라 다음 권리를 행사할 수 있습니다:</p>
+            <ul>
+                <li>데이터 이동권 (Right to data portability)</li>
+                <li>자동화된 의사결정에 대한 거부권</li>
+                <li>감독 기관에 불만을 제기할 권리</li>
+            </ul>
+
+            <h3>캘리포니아 거주자 (CCPA)</h3>
+            <p>CCPA에 따라 다음 권리를 행사할 수 있습니다:</p>
+            <ul>
+                <li>수집된 개인정보에 대한 알 권리</li>
+                <li>개인정보 삭제 요청권</li>
+                <li>개인정보 판매 거부권 (본 앱은 개인정보를 판매하지 않습니다)</li>
+            </ul>
+
+            <h2>14. 개인정보 처리방침의 변경</h2>
             <p>이 개인정보 처리방침은 2025년 11월 10일부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우에는 변경사항의 시행 7일 전부터 앱 내 공지사항을 통하여 고지할 것입니다.</p>
 
             <div style="margin-top: 50px; padding-top: 30px; border-top: 1px solid #e2e8f0; text-align: center; color: #718096;">
@@ -438,12 +541,12 @@
         </div>
 
         <!-- English Version -->
-        <div lang="en">
+        <div class="lang-en">
             <h2>1. Purpose of Processing Personal Information</h2>
-            <p>"Today's QT" (hereinafter referred to as "the App") processes personal information for the following purposes. The personal information being processed will not be used for purposes other than the following. If the purpose of use changes, necessary measures will be taken, including obtaining separate consent in accordance with Article 18 of the Personal Information Protection Act.</p>
+            <p>"Today's QT" (hereinafter referred to as "the App") processes personal information for the following purposes. The personal information being processed will not be used for purposes other than the following. If the purpose of use changes, necessary measures will be taken, including obtaining separate consent in accordance with applicable laws.</p>
             
             <ul>
-                <li>Member registration and management (providing email-based membership services)</li>
+                <li>Member registration and management (Firebase-based membership services)</li>
                 <li>Storage and management of user-created sharing posts and devotional content</li>
                 <li>Service provision and operation</li>
                 <li>Providing customized notification services</li>
@@ -454,19 +557,26 @@
             <p>The App collects only the minimum necessary personal information and processes the following information:</p>
 
             <div class="highlight-box">
-                <h3>📧 Required Collection Items (Upon Registration)</h3>
+                <h3>🔐 Authentication Information (Managed by Firebase)</h3>
                 <ul>
-                    <li><strong>Email Address</strong> - For user identification and account management purposes</li>
+                    <li><strong>Email Address</strong> - Managed by Firebase Authentication (NOT stored on app server)</li>
+                    <li><strong>Password</strong> - Encrypted and stored in Firebase Authentication (NOT stored on app server)</li>
                 </ul>
-                <p style="margin-top: 15px;"><strong>Important:</strong> The App does not collect or store passwords. All authentication is securely handled through Firebase Authentication.</p>
+                <p style="margin-top: 15px;"><strong>Important:</strong> The App does not collect or store email addresses and passwords on its server. All authentication information is securely managed through Firebase Authentication.</p>
             </div>
 
-            <h3>Automatically Collected Information</h3>
+            <h3>📝 Information Stored on App Server</h3>
+            <ul>
+                <li><strong>Firebase User ID (UID)</strong> - Used only for user identification and data linking</li>
+                <li><strong>Sharing Posts and Devotional Content</strong> - Text content created directly by users</li>
+                <li><strong>Creation Date/Time</strong> - For content management and display purposes</li>
+            </ul>
+
+            <h3>🔍 Automatically Collected Information</h3>
             <ul>
                 <li>Device information (device model, OS version)</li>
                 <li>App usage records and analytics data (Firebase Analytics)</li>
                 <li>Advertising identifier (for Google AdMob ad serving)</li>
-                <li>Sharing post content (devotional and sharing content created by users)</li>
             </ul>
 
             <h2>3. Processing and Retention Period of Personal Information</h2>
@@ -475,8 +585,9 @@
             <div class="info-box">
                 <h3>Processing and Retention Period</h3>
                 <ul>
-                    <li><strong>Email Address:</strong> Until account deletion (deleted immediately upon withdrawal)</li>
+                    <li><strong>Firebase UID:</strong> Until account deletion (deleted immediately from app server upon withdrawal)</li>
                     <li><strong>Sharing Posts and Devotional Content:</strong> Until account deletion (deleted or anonymized according to user choice upon withdrawal)</li>
+                    <li><strong>Email Address (Firebase):</strong> Until account deletion (managed by Firebase)</li>
                     <li><strong>App Usage Records:</strong> 3 months from collection date</li>
                     <li><strong>Advertising-related Data:</strong> According to Google AdMob policy</li>
                 </ul>
@@ -490,7 +601,55 @@
                 <li>When required by law or requested by investigative agencies according to procedures and methods defined by law</li>
             </ul>
 
-            <h2>5. Entrustment of Personal Information Processing</h2>
+            <h2>5. Personal Information Processing and Storage Locations</h2>
+            <p>The App processes and stores personal information as follows to provide services:</p>
+
+            <div class="info-box">
+                <h3>📍 Data Storage Locations</h3>
+                <table style="width: 100%; margin-top: 15px;">
+                    <thead>
+                        <tr>
+                            <th>Data Type</th>
+                            <th>Storage Location</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Email Address</strong></td>
+                            <td>Firebase Authentication</td>
+                            <td>User authentication and account management</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Password</strong></td>
+                            <td>Firebase Authentication (encrypted)</td>
+                            <td>User authentication</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Firebase UID</strong></td>
+                            <td>App Server Database</td>
+                            <td>User identification and data linking</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sharing Posts & Devotional Content</strong></td>
+                            <td>App Server Database</td>
+                            <td>User content storage and provision</td>
+                        </tr>
+                        <tr>
+                            <td><strong>App Usage Analytics</strong></td>
+                            <td>Firebase Analytics</td>
+                            <td>Service improvement and statistical analysis</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Advertising Data</strong></td>
+                            <td>Google AdMob</td>
+                            <td>Ad serving and performance measurement</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>6. Entrustment of Personal Information Processing</h2>
             <p>The App entrusts personal information processing tasks as follows to provide smooth services:</p>
 
             <table>
@@ -498,7 +657,7 @@
                     <tr>
                         <th>Trustee</th>
                         <th>Entrusted Tasks</th>
-                        <th>Retention and Use Period</th>
+                        <th>Processed Data</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -506,11 +665,15 @@
                         <td>Google Firebase</td>
                         <td>
                             - User authentication (Firebase Authentication)<br>
-                            - Data storage (Firestore Database)<br>
                             - Push notifications (Firebase Cloud Messaging)<br>
                             - App usage analysis (Firebase Analytics)
                         </td>
-                        <td>Until account deletion or termination of entrustment contract</td>
+                        <td>
+                            - Email address (encrypted)<br>
+                            - Password (encrypted)<br>
+                            - Device information<br>
+                            - App usage records
+                        </td>
                     </tr>
                     <tr>
                         <td>Google AdMob</td>
@@ -518,23 +681,32 @@
                             - In-app advertising<br>
                             - Ad performance measurement and analysis
                         </td>
-                        <td>According to Google AdMob policy</td>
+                        <td>
+                            - Advertising ID<br>
+                            - Device information<br>
+                            - IP address
+                        </td>
                     </tr>
                 </tbody>
             </table>
 
             <div class="info-box">
-                <h3>🔒 Data Security through Firebase</h3>
-                <p>The App securely manages data using Firebase as follows:</p>
+                <h3>🔒 Data Security and Management</h3>
+                <p><strong>Firebase Authentication:</strong></p>
                 <ul>
-                    <li><strong>Email addresses</strong> are encrypted and stored in Firebase Authentication</li>
-                    <li><strong>Passwords are not collected or stored by the app</strong> and are securely managed by Firebase</li>
-                    <li><strong>Sharing post data</strong> is encrypted and stored in Firebase Firestore</li>
+                    <li>Email addresses and passwords are encrypted and securely stored in Firebase</li>
+                    <li>Email and password are NOT stored on the app server</li>
+                    <li>Only Firebase UID is stored on the app server to identify users</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>App Server:</strong></p>
+                <ul>
+                    <li>Only Firebase UID and user-created sharing posts are stored</li>
                     <li>All data transmission is encrypted via HTTPS</li>
+                    <li>Regular security updates and backups are performed</li>
                 </ul>
             </div>
 
-            <h2>6. Google AdMob Advertising Service</h2>
+            <h2>7. Google AdMob Advertising Service</h2>
             <p>The App provides advertisements through Google AdMob, and the following information may be processed during this process:</p>
 
             <h3>Information Collected</h3>
@@ -551,13 +723,13 @@
                 <li><strong>iOS:</strong> Settings > Privacy > Tracking > Allow Apps to Request to Track (turn off)</li>
             </ul>
 
-            <p>For more information about Google's advertising services and privacy practices, please visit:</p>
+            <p>For more information about Google's advertising services and privacy practices:</p>
             <ul>
                 <li>Google Privacy Policy: <a href="https://policies.google.com/privacy" target="_blank" style="color: #667eea;">https://policies.google.com/privacy</a></li>
                 <li>AdMob and Advertising: <a href="https://support.google.com/admob/answer/6128543" target="_blank" style="color: #667eea;">https://support.google.com/admob/answer/6128543</a></li>
             </ul>
 
-            <h2>7. Rights and Obligations of Data Subjects and Exercise Methods</h2>
+            <h2>8. Rights and Obligations of Data Subjects</h2>
             <p>Data subjects can exercise the following rights as personal information subjects:</p>
 
             <ol>
@@ -567,54 +739,84 @@
                 <li>Request suspension of personal information processing</li>
             </ol>
 
-            <p>Rights can be exercised directly through the 'Settings > Account Management' menu in the app, or through written documents, email, etc., and the App will take action without delay.</p>
+            <p>Rights can be exercised directly through the 'Settings > Account Management' menu in the app, or through email, and the App will take action without delay.</p>
 
-            <h2>8. Destruction of Personal Information</h2>
+            <h2>9. Destruction of Personal Information</h2>
             <p>The App destroys personal information without delay when it becomes unnecessary, such as when the retention period has expired or the processing purpose has been achieved.</p>
 
             <h3>Destruction Procedures and Methods</h3>
             <ul>
-                <li><strong>Upon Account Deletion:</strong> Email address and related data are immediately deleted from Firebase</li>
-                <li><strong>Data Destruction:</strong> Permanently deleted through Firebase deletion function, making recovery impossible</li>
+                <li><strong>Upon Account Deletion:</strong>
+                    <ul>
+                        <li>Firebase UID and sharing post data are immediately deleted from the app server</li>
+                        <li>Email address and authentication information are deleted from Firebase</li>
+                    </ul>
+                </li>
+                <li><strong>Data Destruction:</strong> Permanently deleted, making recovery impossible</li>
                 <li><strong>Log Data:</strong> Automatically deleted after 3 months</li>
             </ul>
 
-            <h2>9. Measures to Ensure Personal Information Security</h2>
+            <h2>10. Measures to Ensure Personal Information Security</h2>
             <p>The App takes the following measures to ensure the security of personal information:</p>
 
             <ul>
                 <li><strong>Administrative Measures:</strong> Minimization and training of personal information handling staff</li>
                 <li><strong>Technical Measures:</strong>
                     <ul>
-                        <li>Data access restriction through Firebase Security Rules</li>
-                        <li>Encryption of all data transmission via HTTPS</li>
                         <li>Secure authentication through Firebase Authentication</li>
+                        <li>Encryption of all data transmission via HTTPS</li>
+                        <li>Server access control and permission management</li>
                         <li>Regular security updates and vulnerability checks</li>
                     </ul>
                 </li>
-                <li><strong>Physical Measures:</strong> Utilization of Google Cloud Platform's secure data centers</li>
+                <li><strong>Physical Measures:</strong> Utilization of secure data centers and access control</li>
             </ul>
 
-            <h2>10. Privacy Officer</h2>
+            <h2>11. International Data Transfers</h2>
+            <p>To provide global services, user data may be transferred across borders:</p>
+            <ul>
+                <li>Firebase and Google services use data centers worldwide</li>
+                <li>All data transfers are made with appropriate security measures</li>
+                <li>Data protection laws of your country of residence may apply</li>
+                <li>Data is processed through Google's global infrastructure and complies with applicable regional laws</li>
+            </ul>
+
+            <h2>12. Privacy Officer</h2>
             <div class="contact-info">
-                <p>The App has designated a privacy officer as follows to oversee personal information processing tasks and handle complaints and remedy damages related to personal information processing:</p>
+                <p>The App has designated a privacy officer to oversee personal information processing tasks and handle complaints and remedy damages related to personal information processing:</p>
                 
                 <h3 style="color: #667eea; margin-top: 20px;">Privacy Officer</h3>
                 <p style="margin: 10px 0;"><strong>Email:</strong> privacy@todaysqt.com</p>
                 <p><strong>Inquiries:</strong> If you have any questions regarding personal information, please contact us via the email above.</p>
             </div>
 
-            <h2>11. Remedies for Rights Infringement</h2>
-            <p>Data subjects can apply for dispute resolution or consultation to the Personal Information Dispute Mediation Committee, Korea Internet & Security Agency Personal Information Infringement Report Center, etc., to receive remedies for personal information infringement.</p>
-
+            <h2>13. Regional Additional Information</h2>
+            <p>Depending on your region of residence, additional privacy protection rights may apply:</p>
+            
+            <h3>South Korea Residents</h3>
+            <p>You can apply for dispute resolution or consultation to the following organizations:</p>
             <ul>
-                <li><strong>Personal Information Dispute Mediation Committee:</strong> 1833-6972 (www.kopico.go.kr)</li>
-                <li><strong>Personal Information Infringement Report Center:</strong> (without area code) 118 (privacy.kisa.or.kr)</li>
-                <li><strong>Supreme Prosecutors' Office:</strong> (without area code) 1301 (www.spo.go.kr)</li>
-                <li><strong>National Police Agency:</strong> (without area code) 182 (ecrm.cyber.go.kr)</li>
+                <li>Personal Information Dispute Mediation Committee: 1833-6972 (www.kopico.go.kr)</li>
+                <li>Personal Information Infringement Report Center: 118 (privacy.kisa.or.kr)</li>
             </ul>
 
-            <h2>12. Changes to Privacy Policy</h2>
+            <h3>European Union (EU) Residents (GDPR)</h3>
+            <p>Under GDPR, you can exercise the following rights:</p>
+            <ul>
+                <li>Right to data portability</li>
+                <li>Right to object to automated decision-making</li>
+                <li>Right to lodge a complaint with a supervisory authority</li>
+            </ul>
+
+            <h3>California Residents (CCPA)</h3>
+            <p>Under CCPA, you can exercise the following rights:</p>
+            <ul>
+                <li>Right to know about personal information collected</li>
+                <li>Right to request deletion of personal information</li>
+                <li>Right to opt-out of the sale of personal information (We do not sell personal information)</li>
+            </ul>
+
+            <h2>14. Changes to Privacy Policy</h2>
             <p>This privacy policy takes effect from November 10, 2025, and if there are additions, deletions, or corrections to changes according to laws and policies, notice will be given through in-app announcements from 7 days before the implementation of changes.</p>
 
             <div style="margin-top: 50px; padding-top: 30px; border-top: 1px solid #e2e8f0; text-align: center; color: #718096;">
@@ -625,32 +827,26 @@
     </div>
 
     <footer class="footer">
-        <p><a href="index.html" lang="ko" class="active-lang">홈으로 돌아가기</a></p>
-        <p><a href="index.html" lang="en">Back to Home</a></p>
-        <p style="margin-top: 10px;" lang="ko" class="active-lang">&copy; 2025 오늘의큐티. All rights reserved.</p>
-        <p style="margin-top: 10px;" lang="en">&copy; 2025 Today's QT. All rights reserved.</p>
+        <p><a href="index.html" class="lang-ko">홈으로 돌아가기</a></p>
+        <p><a href="index.html" class="lang-en">Back to Home</a></p>
+        <p style="margin-top: 10px;" class="lang-ko">&copy; 2025 오늘의큐티. All rights reserved.</p>
+        <p style="margin-top: 10px;" class="lang-en">&copy; 2025 Today's QT. All rights reserved.</p>
     </footer>
 
     <script>
         function setLanguage(lang) {
-            const koElements = document.querySelectorAll('[lang="ko"]');
-            const enElements = document.querySelectorAll('[lang="en"]');
+            // Set data attribute on html element
+            document.documentElement.setAttribute('data-lang', lang);
             
-            if (lang === 'ko') {
-                koElements.forEach(el => el.classList.add('active-lang'));
-                enElements.forEach(el => el.classList.remove('active-lang'));
-                document.getElementById('btn-ko').classList.add('active');
-                document.getElementById('btn-en').classList.remove('active');
-            } else {
-                enElements.forEach(el => el.classList.add('active-lang'));
-                koElements.forEach(el => el.classList.remove('active-lang'));
-                document.getElementById('btn-en').classList.add('active');
-                document.getElementById('btn-ko').classList.remove('active');
-            }
+            // Update button states
+            document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
             
+            // Save preference
             localStorage.setItem('language', lang);
         }
 
+        // Load saved language preference on page load
         window.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('language') || 'ko';
             setLanguage(savedLang);
