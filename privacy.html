@@ -265,7 +265,7 @@
 
             <h3>🔓 비회원 사용자</h3>
             <ul>
-                <li><strong>익명 ID:</strong> 앱 설치 시 자동으로 생성되어 기기에 저장됩니다</li>
+                <li><strong>익명 ID:</strong> 나눔글을 최초로 작성할 때 자동으로 생성되어 기기에 저장됩니다</li>
                 <li><strong>나눔글:</strong> 익명 ID와 함께 서버에 저장됩니다</li>
                 <li><strong>제한사항:</strong> 기기를 변경하거나 앱을 재설치하면 이전 나눔글을 복구할 수 없습니다</li>
                 <li><strong>개인정보 수집:</strong> 이메일, 이름 등 개인을 식별할 수 있는 정보는 수집하지 않습니다</li>
@@ -297,7 +297,7 @@
             <div class="info-box">
                 <h4>📱 앱 서버에 저장되는 정보</h4>
                 <ul>
-                    <li><strong>익명 ID (UUID)</strong> - 앱 설치 시 자동 생성되어 기기에 저장되며, 나눔글과 연결하기 위해 서버에도 저장됩니다</li>
+                    <li><strong>익명 ID (UUID)</strong> - 나눔글을 최초로 작성할 때 자동 생성되어 기기에 저장되며, 나눔글과 연결하기 위해 서버에도 저장됩니다</li>
                     <li><strong>나눔글 및 묵상 내용</strong> - 사용자가 직접 작성한 텍스트 콘텐츠 (익명 ID 또는 Firebase UID와 연결)</li>
                     <li><strong>작성 일시</strong> - 나눔글 관리 및 표시 목적</li>
                 </ul>
@@ -313,14 +313,14 @@
             <h3>👤 회원 사용자만 추가 수집 (선택사항)</h3>
 
             <div class="highlight-box">
-                <h4>🔐 소셜 로그인 정보 (Firebase에서 관리)</h4>
+                <h4>🔐 소셜 로그인 정보</h4>
                 <ul>
-                    <li><strong>이메일 주소</strong> - 소셜 로그인 제공자(구글, 애플, 카카오톡)로부터 수신하여 Firebase Authentication에서 관리</li>
-                    <li><strong>소셜 로그인 제공자 정보</strong> - 어떤 서비스(구글/애플/카카오톡)로 로그인했는지에 대한 정보</li>
-                    <li><strong>프로필 정보</strong> - 소셜 로그인 제공자가 제공하는 기본 프로필 정보 (이름 등, 선택적)</li>
-                    <li><strong>Firebase UID</strong> - Firebase가 생성한 고유 사용자 식별자 (앱 서버에 저장)</li>
+                    <li><strong>이메일 주소</strong> - 소셜 로그인 제공자(구글, 애플, 카카오톡)로부터 수신하여 Firebase Authentication 및 앱 서버 데이터베이스에 저장</li>
+                    <li><strong>소셜 로그인 제공자 정보</strong> - 어떤 서비스(구글/애플/카카오톡)로 로그인했는지에 대한 정보 (Firebase에서 관리)</li>
+                    <li><strong>프로필 정보</strong> - 소셜 로그인 제공자가 제공하는 기본 프로필 정보 (이름 등, 선택적, Firebase에서 관리)</li>
+                    <li><strong>Firebase UID</strong> - Firebase가 생성한 고유 사용자 식별자 (앱 서버 데이터베이스에 저장)</li>
                 </ul>
-                <p style="margin-top: 15px;"><strong>중요:</strong> 본 앱은 비밀번호를 수집하거나 저장하지 않습니다. 구글, 애플, 카카오톡 계정으로 간편하게 로그인하며, 모든 인증은 각 소셜 로그인 제공자와 Firebase Authentication을 통해 안전하게 처리됩니다. 이메일 주소와 인증 정보는 본 앱 서버에 저장되지 않습니다.</p>
+                <p style="margin-top: 15px;"><strong>중요:</strong> 본 앱은 비밀번호를 수집하거나 저장하지 않습니다. 구글, 애플, 카카오톡 계정으로 간편하게 로그인하며, 모든 인증은 각 소셜 로그인 제공자와 Firebase Authentication을 통해 안전하게 처리됩니다. 이메일 주소는 Firebase Authentication과 앱 서버 데이터베이스 양쪽에 저장되며, 회원 관리 및 서비스 제공 목적으로 사용됩니다.</p>
             </div>
 
             <h2>4. 개인정보의 처리 및 보유기간</h2>
@@ -339,9 +339,9 @@
             <div class="info-box">
                 <h3>회원 사용자</h3>
                 <ul>
+                    <li><strong>이메일 주소:</strong> 회원 탈퇴 시까지 (탈퇴 즉시 Firebase 및 앱 서버에서 삭제)</li>
                     <li><strong>Firebase UID:</strong> 회원 탈퇴 시까지 (탈퇴 즉시 앱 서버에서 삭제)</li>
                     <li><strong>나눔글 및 묵상 내용:</strong> 회원 탈퇴 시까지 (탈퇴 시 사용자 선택에 따라 삭제 또는 익명 처리)</li>
-                    <li><strong>이메일 주소 (Firebase):</strong> 회원 탈퇴 시까지 (Firebase에서 관리)</li>
                     <li><strong>앱 사용 기록:</strong> 수집일로부터 3개월</li>
                     <li><strong>광고 관련 데이터:</strong> Google AdMob 정책에 따름</li>
                 </ul>
@@ -374,13 +374,13 @@
                             <td><strong>익명 ID (UUID)</strong></td>
                             <td>✅</td>
                             <td>❌</td>
-                            <td>기기 + 앱 서버</td>
+                            <td>기기 + 앱 서버 데이터베이스</td>
                         </tr>
                         <tr>
                             <td><strong>이메일 주소</strong></td>
                             <td>❌</td>
                             <td>✅</td>
-                            <td>Firebase Authentication</td>
+                            <td>Firebase Authentication + 앱 서버 데이터베이스</td>
                         </tr>
                         <tr>
                             <td><strong>소셜 로그인 정보</strong></td>
@@ -426,7 +426,7 @@
                 <h3>🔍 익명 ID란?</h3>
                 <p>익명 ID는 사용자를 식별하기 위한 무작위로 생성된 고유 식별자입니다. 이메일이나 이름 같은 개인정보와는 달리 개인을 특정할 수 없으며, 오직 나눔글을 저장하고 불러오는 용도로만 사용됩니다.</p>
                 <ul>
-                    <li>앱 최초 실행 시 자동 생성</li>
+                    <li>나눔글 최초 작성 시 자동 생성</li>
                     <li>기기에 안전하게 저장</li>
                     <li>개인을 식별할 수 없는 무작위 문자열 (예: "a1b2c3d4-e5f6-7890-abcd-ef1234567890")</li>
                     <li>회원가입 시 Firebase UID로 대체</li>
@@ -519,105 +519,15 @@
                 <ul>
                     <li>각 소셜 로그인 제공자가 인증을 직접 처리합니다</li>
                     <li>본 앱은 비밀번호를 수집하거나 저장하지 않습니다</li>
-                    <li>이메일 주소는 Firebase Authentication에서 안전하게 관리됩니다</li>
-                    <li>앱 서버에는 이메일이 저장되지 않으며, Firebase UID만 저장됩니다</li>
+                    <li>이메일 주소는 Firebase Authentication과 앱 서버 데이터베이스에 저장됩니다</li>
+                    <li>Firebase UID는 앱 서버 데이터베이스에 안전하게 저장됩니다</li>
                 </ul>
                 <p style="margin-top: 15px;"><strong>앱 서버:</strong></p>
                 <ul>
-                    <li>익명 ID 또는 Firebase UID와 사용자가 작성한 나눔글만 저장됩니다</li>
+                    <li>이메일 주소, Firebase UID, 그리고 사용자가 작성한 나눔글이 저장됩니다</li>
                     <li>모든 데이터 전송은 HTTPS를 통해 암호화됩니다</li>
                     <li>정기적인 보안 업데이트 및 백업이 수행됩니다</li>
-                </ul>
-            </div>
-
-            <h2>8. Google AdMob 광고 서비스</h2>
-            <p>본 앱은 원활한 서비스 제공을 위해 다음과 같이 개인정보 처리업무를 위탁하고 있습니다:</p>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>수탁업체</th>
-                        <th>위탁업무 내용</th>
-                        <th>처리 데이터</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Google Firebase</td>
-                        <td>
-                            - 소셜 로그인 인증 (Firebase Authentication)<br>
-                            - 푸시 알림 (Firebase Cloud Messaging)<br>
-                            - 앱 사용 분석 (Firebase Analytics)
-                        </td>
-                        <td>
-                            - 이메일 주소<br>
-                            - 소셜 로그인 제공자 정보<br>
-                            - 기기 정보<br>
-                            - 앱 사용 기록
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Google (구글 로그인)</td>
-                        <td>
-                            - 구글 계정 인증<br>
-                            - 기본 프로필 정보 제공
-                        </td>
-                        <td>
-                            - 구글 계정 이메일<br>
-                            - 프로필 정보 (선택적)
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Apple (애플 로그인)</td>
-                        <td>
-                            - 애플 계정 인증<br>
-                            - 기본 프로필 정보 제공
-                        </td>
-                        <td>
-                            - 애플 계정 이메일<br>
-                            - 프로필 정보 (선택적)
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Kakao (카카오톡 로그인)</td>
-                        <td>
-                            - 카카오 계정 인증<br>
-                            - 기본 프로필 정보 제공
-                        </td>
-                        <td>
-                            - 카카오 계정 이메일<br>
-                            - 프로필 정보 (선택적)
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Google AdMob</td>
-                        <td>
-                            - 앱 내 광고 게재<br>
-                            - 광고 성과 측정 및 분석
-                        </td>
-                        <td>
-                            - 광고 식별자<br>
-                            - 기기 정보<br>
-                            - IP 주소
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="info-box">
-                <h3>🔒 데이터 보안 및 관리</h3>
-                <p><strong>소셜 로그인 (구글, 애플, 카카오톡):</strong></p>
-                <ul>
-                    <li>각 소셜 로그인 제공자가 인증을 직접 처리합니다</li>
-                    <li>본 앱은 비밀번호를 수집하거나 저장하지 않습니다</li>
-                    <li>이메일 주소는 Firebase Authentication에서 안전하게 관리됩니다</li>
-                    <li>앱 서버에는 이메일이 저장되지 않으며, Firebase UID만 저장됩니다</li>
-                </ul>
-                <p style="margin-top: 15px;"><strong>앱 서버:</strong></p>
-                <ul>
-                    <li>Firebase UID와 사용자가 작성한 나눔글만 저장됩니다</li>
-                    <li>모든 데이터 전송은 HTTPS를 통해 암호화됩니다</li>
-                    <li>정기적인 보안 업데이트 및 백업이 수행됩니다</li>
+                    <li>데이터베이스 접근 권한은 최소 인원으로 제한됩니다</li>
                 </ul>
             </div>
 
@@ -678,8 +588,9 @@
             <ul>
                 <li><strong>회원 탈퇴 시:</strong>
                     <ul>
+                        <li>이메일 주소는 Firebase Authentication 및 앱 서버 데이터베이스에서 즉시 삭제됩니다</li>
                         <li>Firebase UID 및 나눔글 데이터는 즉시 앱 서버에서 삭제됩니다</li>
-                        <li>이메일 주소 및 소셜 로그인 연동 정보는 Firebase에서 삭제됩니다</li>
+                        <li>소셜 로그인 연동 정보는 Firebase에서 삭제됩니다</li>
                         <li>구글, 애플, 카카오톡 계정 자체는 각 서비스 제공자가 관리하므로 삭제되지 않습니다</li>
                     </ul>
                 </li>
@@ -691,57 +602,6 @@
             </ul>
 
             <h2>11. 개인정보의 안전성 확보조치</h2>
-            <p>본 앱은 Google AdMob을 통해 광고를 제공하며, 이 과정에서 다음과 같은 정보가 처리될 수 있습니다:</p>
-
-            <h3>수집되는 정보</h3>
-            <ul>
-                <li>광고 식별자 (Advertising ID)</li>
-                <li>기기 정보 및 IP 주소</li>
-                <li>앱 사용 정보 및 광고 인터랙션 데이터</li>
-            </ul>
-
-            <h3>광고 맞춤 설정</h3>
-            <p>사용자는 기기 설정에서 맞춤형 광고를 거부할 수 있습니다:</p>
-            <ul>
-                <li><strong>Android:</strong> 설정 > Google > 광고 > 광고 맞춤설정 선택 해제</li>
-                <li><strong>iOS:</strong> 설정 > 개인정보 보호 > 추적 > 앱이 추적을 요청하도록 허용 끄기</li>
-            </ul>
-
-            <p>Google의 광고 서비스 및 개인정보 처리에 대한 자세한 내용:</p>
-            <ul>
-                <li>Google 개인정보처리방침: <a href="https://policies.google.com/privacy" target="_blank" style="color: #667eea;">https://policies.google.com/privacy</a></li>
-                <li>AdMob 및 광고: <a href="https://support.google.com/admob/answer/6128543" target="_blank" style="color: #667eea;">https://support.google.com/admob/answer/6128543</a></li>
-            </ul>
-
-            <h2>8. 정보주체의 권리·의무 및 행사방법</h2>
-            <p>정보주체는 개인정보주체로서 다음과 같은 권리를 행사할 수 있습니다:</p>
-
-            <ol>
-                <li>개인정보 열람 요구</li>
-                <li>개인정보 오류 등이 있을 경우 정정 요구</li>
-                <li>개인정보 삭제 요구</li>
-                <li>개인정보 처리정지 요구</li>
-            </ol>
-
-            <p>권리 행사는 앱 내 '설정 > 계정 관리' 메뉴를 통해 직접 하실 수 있으며, 이메일 등을 통하여 하실 수 있고 본 앱은 이에 대해 지체없이 조치하겠습니다.</p>
-
-            <h2>9. 개인정보의 파기</h2>
-            <p>본 앱은 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체없이 해당 개인정보를 파기합니다.</p>
-
-            <h3>파기절차 및 방법</h3>
-            <ul>
-                <li><strong>회원 탈퇴 시:</strong>
-                    <ul>
-                        <li>Firebase UID 및 나눔글 데이터는 즉시 앱 서버에서 삭제됩니다</li>
-                        <li>이메일 주소 및 소셜 로그인 연동 정보는 Firebase에서 삭제됩니다</li>
-                        <li>구글, 애플, 카카오톡 계정 자체는 각 서비스 제공자가 관리하므로 삭제되지 않습니다</li>
-                    </ul>
-                </li>
-                <li><strong>데이터 파기:</strong> 복구 불가능하게 영구 삭제됩니다</li>
-                <li><strong>로그 데이터:</strong> 3개월 후 자동으로 삭제됩니다</li>
-            </ul>
-
-            <h2>10. 개인정보의 안전성 확보조치</h2>
             <p>본 앱은 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고 있습니다:</p>
 
             <ul>
@@ -752,22 +612,7 @@
                         <li>HTTPS를 통한 모든 데이터 전송 암호화</li>
                         <li>서버 접근 제어 및 권한 관리</li>
                         <li>정기적인 보안 업데이트 및 취약점 점검</li>
-                    </ul>
-                </li>
-                <li><strong>물리적 조치:</strong> 안전한 데이터센터 활용 및 접근 통제</li>
-            </ul>
-
-            <h2>11. 개인정보의 안전성 확보조치</h2>
-            <p>본 앱은 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고 있습니다:</p>
-
-            <ul>
-                <li><strong>관리적 조치:</strong> 개인정보 취급 직원의 최소화 및 교육</li>
-                <li><strong>기술적 조치:</strong> 
-                    <ul>
-                        <li>Firebase Authentication을 통한 안전한 인증</li>
-                        <li>HTTPS를 통한 모든 데이터 전송 암호화</li>
-                        <li>서버 접근 제어 및 권한 관리</li>
-                        <li>정기적인 보안 업데이트 및 취약점 점검</li>
+                        <li>개인정보에 대한 접근 로그 기록 및 모니터링</li>
                     </ul>
                 </li>
                 <li><strong>물리적 조치:</strong> 안전한 데이터센터 활용 및 접근 통제</li>
@@ -777,6 +622,7 @@
             <p>본 앱은 글로벌 서비스를 제공하기 위해 사용자의 데이터가 국경을 넘어 전송될 수 있습니다:</p>
             <ul>
                 <li>Firebase 및 Google 서비스는 전 세계 데이터센터를 사용합니다</li>
+                <li>앱 서버에 저장되는 데이터는 안전한 클라우드 서버에 보관됩니다</li>
                 <li>모든 데이터 전송은 적절한 보안 조치와 함께 이루어집니다</li>
                 <li>귀하의 거주 국가의 데이터 보호법이 적용될 수 있습니다</li>
                 <li>데이터는 Google의 글로벌 인프라를 통해 처리되며, 해당 지역의 법률을 준수합니다</li>
@@ -829,61 +675,6 @@
         <!-- English Version -->
         <div class="lang-en">
             <h2>1. Membership and Data Collection Overview</h2>
-            <p>본 앱은 글로벌 서비스를 제공하기 위해 사용자의 데이터가 국경을 넘어 전송될 수 있습니다:</p>
-            <ul>
-                <li>Firebase 및 Google 서비스는 전 세계 데이터센터를 사용합니다</li>
-                <li>모든 데이터 전송은 적절한 보안 조치와 함께 이루어집니다</li>
-                <li>귀하의 거주 국가의 데이터 보호법이 적용될 수 있습니다</li>
-                <li>데이터는 Google의 글로벌 인프라를 통해 처리되며, 해당 지역의 법률을 준수합니다</li>
-            </ul>
-
-            <h2>12. 개인정보 보호책임자</h2>
-            <div class="contact-info">
-                <p>본 앱은 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.</p>
-                
-                <h3 style="color: #667eea; margin-top: 20px;">개인정보 보호책임자</h3>
-                <p style="margin: 10px 0;"><strong>이메일:</strong> manna.attendance@gmail.com</p>
-                <p><strong>문의:</strong> 개인정보 관련 문의사항이 있으시면 위 이메일로 연락 주시기 바랍니다.</p>
-            </div>
-
-            <h2>13. 지역별 추가 정보</h2>
-            <p>귀하의 거주 지역에 따라 추가적인 개인정보 보호 권리가 적용될 수 있습니다:</p>
-            
-            <h3>한국 거주자</h3>
-            <p>개인정보침해로 인한 구제를 받기 위하여 다음 기관에 분쟁해결이나 상담을 신청할 수 있습니다:</p>
-            <ul>
-                <li>개인정보분쟁조정위원회: 1833-6972 (www.kopico.go.kr)</li>
-                <li>개인정보침해신고센터: (국번없이) 118 (privacy.kisa.or.kr)</li>
-            </ul>
-
-            <h3>유럽연합(EU) 거주자 (GDPR)</h3>
-            <p>GDPR에 따라 다음 권리를 행사할 수 있습니다:</p>
-            <ul>
-                <li>데이터 이동권 (Right to data portability)</li>
-                <li>자동화된 의사결정에 대한 거부권</li>
-                <li>감독 기관에 불만을 제기할 권리</li>
-            </ul>
-
-            <h3>캘리포니아 거주자 (CCPA)</h3>
-            <p>CCPA에 따라 다음 권리를 행사할 수 있습니다:</p>
-            <ul>
-                <li>수집된 개인정보에 대한 알 권리</li>
-                <li>개인정보 삭제 요청권</li>
-                <li>개인정보 판매 거부권 (본 앱은 개인정보를 판매하지 않습니다)</li>
-            </ul>
-
-            <h2>14. 개인정보 처리방침의 변경</h2>
-            <p>이 개인정보 처리방침은 2025년 11월 10일부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우에는 변경사항의 시행 7일 전부터 앱 내 공지사항을 통하여 고지할 것입니다.</p>
-
-            <div style="margin-top: 50px; padding-top: 30px; border-top: 1px solid #e2e8f0; text-align: center; color: #718096;">
-                <p><strong>공고일자:</strong> 2025년 11월 10일</p>
-                <p><strong>시행일자:</strong> 2025년 11월 10일</p>
-            </div>
-        </div>
-
-        <!-- English Version -->
-        <div class="lang-en">
-            <h2>1. Membership and Data Collection Overview</h2>
             <div class="highlight-box">
                 <h3>📱 Sign-up is Optional</h3>
                 <p>You can use all basic features of this app without signing up. The data collected varies depending on whether you create an account.</p>
@@ -891,7 +682,7 @@
 
             <h3>🔓 Non-Member Users</h3>
             <ul>
-                <li><strong>Anonymous ID:</strong> Automatically generated upon app installation and stored on your device</li>
+                <li><strong>Anonymous ID:</strong> Automatically generated when you first create a sharing post and stored on your device</li>
                 <li><strong>Sharing Posts:</strong> Stored on the server along with your anonymous ID</li>
                 <li><strong>Limitation:</strong> If you change devices or reinstall the app, you cannot recover previous sharing posts</li>
                 <li><strong>Personal Information:</strong> No personally identifiable information (email, name, etc.) is collected</li>
@@ -923,7 +714,7 @@
             <div class="info-box">
                 <h4>📱 Information Stored on App Server</h4>
                 <ul>
-                    <li><strong>Anonymous ID (UUID)</strong> - Automatically generated upon app installation, stored on device and also on server to link with sharing posts</li>
+                    <li><strong>Anonymous ID (UUID)</strong> - Automatically generated when you first create a sharing post, stored on device and also on server to link with sharing posts</li>
                     <li><strong>Sharing Posts and Devotional Content</strong> - Text content created directly by users (linked with Anonymous ID or Firebase UID)</li>
                     <li><strong>Creation Date/Time</strong> - For content management and display purposes</li>
                 </ul>
@@ -939,14 +730,14 @@
             <h3>👤 Additional Collection for Members Only (Optional)</h3>
 
             <div class="highlight-box">
-                <h4>🔐 Social Login Information (Managed by Firebase)</h4>
+                <h4>🔐 Social Login Information</h4>
                 <ul>
-                    <li><strong>Email Address</strong> - Received from social login providers (Google, Apple, Kakao) and managed by Firebase Authentication</li>
-                    <li><strong>Social Login Provider Information</strong> - Information about which service (Google/Apple/Kakao) was used for login</li>
-                    <li><strong>Profile Information</strong> - Basic profile information provided by social login providers (name, etc., optional)</li>
-                    <li><strong>Firebase UID</strong> - Unique user identifier generated by Firebase (stored on app server)</li>
+                    <li><strong>Email Address</strong> - Received from social login providers (Google, Apple, Kakao) and stored in both Firebase Authentication and app server database</li>
+                    <li><strong>Social Login Provider Information</strong> - Information about which service (Google/Apple/Kakao) was used for login (managed by Firebase)</li>
+                    <li><strong>Profile Information</strong> - Basic profile information provided by social login providers (name, etc., optional, managed by Firebase)</li>
+                    <li><strong>Firebase UID</strong> - Unique user identifier generated by Firebase (stored in app server database)</li>
                 </ul>
-                <p style="margin-top: 15px;"><strong>Important:</strong> The App does not collect or store passwords. Users log in conveniently with their Google, Apple, or Kakao accounts, and all authentication is securely handled through each social login provider and Firebase Authentication. Email addresses and authentication information are NOT stored on the app server.</p>
+                <p style="margin-top: 15px;"><strong>Important:</strong> The App does not collect or store passwords. Users log in conveniently with their Google, Apple, or Kakao accounts, and all authentication is securely handled through each social login provider and Firebase Authentication. Email addresses are stored in both Firebase Authentication and the app server database, and are used for member management and service provision purposes.</p>
             </div>
 
             <h2>4. Processing and Retention Period of Personal Information</h2>
@@ -965,9 +756,9 @@
             <div class="info-box">
                 <h3>Member Users</h3>
                 <ul>
+                    <li><strong>Email Address:</strong> Until account deletion (deleted immediately from Firebase and app server upon withdrawal)</li>
                     <li><strong>Firebase UID:</strong> Until account deletion (deleted immediately from app server upon withdrawal)</li>
                     <li><strong>Sharing Posts and Devotional Content:</strong> Until account deletion (deleted or anonymized according to user choice upon withdrawal)</li>
-                    <li><strong>Email Address (Firebase):</strong> Until account deletion (managed by Firebase)</li>
                     <li><strong>App Usage Records:</strong> 3 months from collection date</li>
                     <li><strong>Advertising-related Data:</strong> According to Google AdMob policy</li>
                 </ul>
@@ -1000,13 +791,13 @@
                             <td><strong>Anonymous ID (UUID)</strong></td>
                             <td>✅</td>
                             <td>❌</td>
-                            <td>Device + App Server</td>
+                            <td>Device + App Server Database</td>
                         </tr>
                         <tr>
                             <td><strong>Email Address</strong></td>
                             <td>❌</td>
                             <td>✅</td>
-                            <td>Firebase Authentication</td>
+                            <td>Firebase Authentication + App Server Database</td>
                         </tr>
                         <tr>
                             <td><strong>Social Login Information</strong></td>
@@ -1052,7 +843,7 @@
                 <h3>🔍 What is an Anonymous ID?</h3>
                 <p>An Anonymous ID is a randomly generated unique identifier used to identify users. Unlike personal information such as email or name, it cannot identify an individual and is used only for storing and retrieving sharing posts.</p>
                 <ul>
-                    <li>Automatically generated on first app launch</li>
+                    <li>Automatically generated when you first create a sharing post</li>
                     <li>Securely stored on device</li>
                     <li>Random string that cannot identify individuals (e.g., "a1b2c3d4-e5f6-7890-abcd-ef1234567890")</li>
                     <li>Replaced with Firebase UID upon membership registration</li>
@@ -1145,14 +936,15 @@
                 <ul>
                     <li>Each social login provider directly handles authentication</li>
                     <li>The App does not collect or store passwords</li>
-                    <li>Email addresses are securely managed in Firebase Authentication</li>
-                    <li>Email is NOT stored on the app server; only Firebase UID is stored</li>
+                    <li>Email addresses are stored in Firebase Authentication and app server database</li>
+                    <li>Firebase UID is securely stored in the app server database</li>
                 </ul>
                 <p style="margin-top: 15px;"><strong>App Server:</strong></p>
                 <ul>
-                    <li>Only Anonymous ID or Firebase UID and user-created sharing posts are stored</li>
+                    <li>Email addresses, Firebase UIDs, and user-created sharing posts are stored</li>
                     <li>All data transmission is encrypted via HTTPS</li>
                     <li>Regular security updates and backups are performed</li>
+                    <li>Database access permissions are limited to minimum personnel</li>
                 </ul>
             </div>
 
@@ -1213,8 +1005,9 @@
             <ul>
                 <li><strong>Upon Account Deletion:</strong>
                     <ul>
+                        <li>Email address is immediately deleted from Firebase Authentication and app server database</li>
                         <li>Firebase UID and sharing post data are immediately deleted from the app server</li>
-                        <li>Email address and social login integration information are deleted from Firebase</li>
+                        <li>Social login integration information is deleted from Firebase</li>
                         <li>Google, Apple, and Kakao accounts themselves are managed by each service provider and are not deleted</li>
                     </ul>
                 </li>
@@ -1236,6 +1029,7 @@
                         <li>Encryption of all data transmission via HTTPS</li>
                         <li>Server access control and permission management</li>
                         <li>Regular security updates and vulnerability checks</li>
+                        <li>Access log recording and monitoring for personal information</li>
                     </ul>
                 </li>
                 <li><strong>Physical Measures:</strong> Utilization of secure data centers and access control</li>
@@ -1245,6 +1039,7 @@
             <p>To provide global services, user data may be transferred across borders:</p>
             <ul>
                 <li>Firebase and Google services use data centers worldwide</li>
+                <li>Data stored on app servers is maintained on secure cloud servers</li>
                 <li>All data transfers are made with appropriate security measures</li>
                 <li>Data protection laws of your country of residence may apply</li>
                 <li>Data is processed through Google's global infrastructure and complies with applicable regional laws</li>
@@ -1293,9 +1088,9 @@
                 <p><strong>Effective Date:</strong> November 10, 2025</p>
             </div>
         </div>
+    </div>
 
-
-        <footer class="footer">
+    <footer class="footer">
         <p><a href="index.html" class="lang-ko">홈으로 돌아가기</a></p>
         <p><a href="index.html" class="lang-en">Back to Home</a></p>
         <p style="margin-top: 10px;" class="lang-ko">&copy; 2025 오늘의큐티. All rights reserved.</p>
