@@ -139,6 +139,13 @@
             border-left: 4px solid #667eea;
         }
 
+        .info-box h4 {
+            color: #2d3748;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            margin-top: 0;
+        }
+
         .highlight-box {
             background: #fff5f5;
             border-left: 4px solid #fc8181;
@@ -266,7 +273,7 @@
             <h3>🔓 비회원 사용자</h3>
             <ul>
                 <li><strong>익명 ID:</strong> 나눔글을 최초로 작성할 때 자동으로 생성되어 기기에 저장됩니다</li>
-                <li><strong>나눔글:</strong> 익명 ID와 함께 서버에 저장됩니다</li>
+                <li><strong>나눔글:</strong> 익명 ID와 함께 나눔글 테이블에 저장됩니다 (익명 ID는 나눔글의 일부로만 저장되며 별도 저장되지 않습니다)</li>
                 <li><strong>제한사항:</strong> 기기를 변경하거나 앱을 재설치하면 이전 나눔글을 복구할 수 없습니다</li>
                 <li><strong>개인정보 수집:</strong> 이메일, 이름 등 개인을 식별할 수 있는 정보는 수집하지 않습니다</li>
             </ul>
@@ -297,8 +304,8 @@
             <div class="info-box">
                 <h4>📱 앱 서버에 저장되는 정보</h4>
                 <ul>
-                    <li><strong>익명 ID (UUID)</strong> - 나눔글을 최초로 작성할 때 자동 생성되어 기기에 저장되며, 나눔글과 연결하기 위해 서버에도 저장됩니다</li>
-                    <li><strong>나눔글 및 묵상 내용</strong> - 사용자가 직접 작성한 텍스트 콘텐츠 (익명 ID 또는 Firebase UID와 연결)</li>
+                    <li><strong>나눔글 및 묵상 내용</strong> - 사용자가 직접 작성한 텍스트 콘텐츠</li>
+                    <li><strong>익명 ID (UUID)</strong> - 나눔글을 최초로 작성할 때 자동 생성되어 기기에 저장되며, 나눔글 테이블의 일부로 포함됩니다 (별도 테이블로 저장되지 않음)</li>
                     <li><strong>작성 일시</strong> - 나눔글 관리 및 표시 목적</li>
                 </ul>
             </div>
@@ -329,8 +336,7 @@
             <div class="info-box">
                 <h3>비회원 사용자</h3>
                 <ul>
-                    <li><strong>익명 ID:</strong> 앱 삭제 시까지 (앱 삭제 시 서버에서도 삭제 가능하도록 기능 제공)</li>
-                    <li><strong>나눔글:</strong> 사용자가 직접 삭제하거나 앱 삭제 요청 시까지</li>
+                    <li><strong>나눔글 및 익명 ID:</strong> 사용자가 직접 삭제하거나 데이터 삭제 요청 시까지 (익명 ID는 나눔글의 일부로만 존재)</li>
                     <li><strong>앱 사용 기록:</strong> 수집일로부터 3개월</li>
                     <li><strong>광고 관련 데이터:</strong> Google AdMob 정책에 따름</li>
                 </ul>
@@ -371,10 +377,22 @@
                     </thead>
                     <tbody>
                         <tr>
+                            <td><strong>나눔글 및 묵상 내용</strong></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>앱 서버 데이터베이스 (나눔글 테이블)</td>
+                        </tr>
+                        <tr>
                             <td><strong>익명 ID (UUID)</strong></td>
                             <td>✅</td>
                             <td>❌</td>
-                            <td>기기 + 앱 서버 데이터베이스</td>
+                            <td>기기 + 나눔글 테이블에 포함 (별도 저장 없음)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>작성 일시</strong></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>앱 서버 데이터베이스 (나눔글 테이블)</td>
                         </tr>
                         <tr>
                             <td><strong>이메일 주소</strong></td>
@@ -391,18 +409,6 @@
                         <tr>
                             <td><strong>Firebase UID</strong></td>
                             <td>❌</td>
-                            <td>✅</td>
-                            <td>앱 서버 데이터베이스</td>
-                        </tr>
-                        <tr>
-                            <td><strong>나눔글 및 묵상 내용</strong></td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>앱 서버 데이터베이스</td>
-                        </tr>
-                        <tr>
-                            <td><strong>작성 일시</strong></td>
-                            <td>✅</td>
                             <td>✅</td>
                             <td>앱 서버 데이터베이스</td>
                         </tr>
@@ -567,7 +573,46 @@
             <p>권리 행사는 앱 내 '설정 > 계정 관리' 메뉴를 통해 직접 하실 수 있으며, 이메일 등을 통하여 하실 수 있고 본 앱은 이에 대해 지체없이 조치하겠습니다.</p>
 
             <h3>비회원 사용자의 데이터 삭제</h3>
-            <p>비회원 사용자는 앱 내에서 작성한 나눔글을 직접 삭제할 수 있으며, 모든 데이터를 삭제하려면 개인정보 보호책임자에게 익명 ID를 제공하여 요청할 수 있습니다.</p>
+            <p>비회원 사용자는 다음 두 가지 방법으로 데이터를 삭제할 수 있습니다:</p>
+
+            <div class="info-box">
+                <h4>📱 방법 1: 앱 내에서 직접 삭제 (권장)</h4>
+                <ul>
+                    <li><strong>"내 모든 데이터 삭제" 기능:</strong>
+                        <ul>
+                            <li>앱 내 '설정 > 계정 관리 > 내 모든 데이터 삭제' 메뉴 이용</li>
+                            <li>나눔글 및 포함된 익명 ID가 서버에서 즉시 삭제됩니다</li>
+                            <li>삭제 후 복구가 불가능합니다</li>
+                        </ul>
+                    </li>
+                    <li><strong>개별 나눔글 직접 삭제:</strong>
+                        <ul>
+                            <li>나눔글 목록에서 원하는 글을 선택하여 개별 삭제 가능</li>
+                            <li>선택한 나눔글만 서버에서 즉시 삭제됩니다</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4>📧 방법 2: 앱 삭제 후 이메일로 삭제 요청</h4>
+                <p>앱을 이미 삭제하여 익명 ID를 확인할 수 없는 경우, 아래 정보와 함께 개인정보 보호책임자 이메일(manna.attendance@gmail.com)로 삭제 요청을 보내주세요:</p>
+                <ul>
+                    <li><strong>필수 정보:</strong>
+                        <ul>
+                            <li>삭제를 원하는 나눔글 내용 일부 (본인 확인용, 10-20자 정도)</li>
+                            <li>나눔글 작성 날짜 (대략적인 기간도 가능)</li>
+                        </ul>
+                    </li>
+                    <li><strong>선택 정보 (본인 확인에 도움):</strong>
+                        <ul>
+                            <li>사용하셨던 기기 정보 (예: iPhone 13, Galaxy S21 등)</li>
+                            <li>앱 사용 기간</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>처리 기간:</strong> 요청 접수 후 7영업일 이내에 삭제 처리되며, 완료 시 회신 드립니다.</p>
+            </div>
 
             <h2>10. 개인정보의 파기</h2>
             <p>본 앱은 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체없이 해당 개인정보를 파기합니다.</p>
@@ -578,7 +623,8 @@
             <ul>
                 <li><strong>데이터 삭제 요청 시:</strong>
                     <ul>
-                        <li>익명 ID 및 연결된 나눔글 데이터가 즉시 앱 서버에서 삭제됩니다</li>
+                        <li>나눔글 및 포함된 익명 ID가 즉시 앱 서버에서 삭제됩니다</li>
+                        <li>익명 ID는 별도로 저장되지 않으며 나눔글의 일부로만 존재합니다</li>
                         <li>삭제 후 복구가 불가능합니다</li>
                     </ul>
                 </li>
@@ -683,7 +729,7 @@
             <h3>🔓 Non-Member Users</h3>
             <ul>
                 <li><strong>Anonymous ID:</strong> Automatically generated when you first create a sharing post and stored on your device</li>
-                <li><strong>Sharing Posts:</strong> Stored on the server along with your anonymous ID</li>
+                <li><strong>Sharing Posts:</strong> Stored in the sharing posts table along with the anonymous ID (the anonymous ID is only stored as part of the post, not separately)</li>
                 <li><strong>Limitation:</strong> If you change devices or reinstall the app, you cannot recover previous sharing posts</li>
                 <li><strong>Personal Information:</strong> No personally identifiable information (email, name, etc.) is collected</li>
             </ul>
@@ -714,8 +760,8 @@
             <div class="info-box">
                 <h4>📱 Information Stored on App Server</h4>
                 <ul>
-                    <li><strong>Anonymous ID (UUID)</strong> - Automatically generated when you first create a sharing post, stored on device and also on server to link with sharing posts</li>
-                    <li><strong>Sharing Posts and Devotional Content</strong> - Text content created directly by users (linked with Anonymous ID or Firebase UID)</li>
+                    <li><strong>Sharing Posts and Devotional Content</strong> - Text content created directly by users</li>
+                    <li><strong>Anonymous ID (UUID)</strong> - Automatically generated when you first create a sharing post, stored on device and included as part of the sharing posts table (not stored in a separate table)</li>
                     <li><strong>Creation Date/Time</strong> - For content management and display purposes</li>
                 </ul>
             </div>
@@ -746,8 +792,7 @@
             <div class="info-box">
                 <h3>Non-Member Users</h3>
                 <ul>
-                    <li><strong>Anonymous ID:</strong> Until app deletion (deletable from server upon user request)</li>
-                    <li><strong>Sharing Posts:</strong> Until user manually deletes or requests app data deletion</li>
+                    <li><strong>Sharing Posts and Anonymous ID:</strong> Until user manually deletes or requests data deletion (anonymous ID only exists as part of sharing posts)</li>
                     <li><strong>App Usage Records:</strong> 3 months from collection date</li>
                     <li><strong>Advertising-related Data:</strong> According to Google AdMob policy</li>
                 </ul>
@@ -788,10 +833,22 @@
                     </thead>
                     <tbody>
                         <tr>
+                            <td><strong>Sharing Posts & Devotional Content</strong></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>App Server Database (Sharing Posts Table)</td>
+                        </tr>
+                        <tr>
                             <td><strong>Anonymous ID (UUID)</strong></td>
                             <td>✅</td>
                             <td>❌</td>
-                            <td>Device + App Server Database</td>
+                            <td>Device + Included in Sharing Posts Table (not stored separately)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Creation Date/Time</strong></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>App Server Database (Sharing Posts Table)</td>
                         </tr>
                         <tr>
                             <td><strong>Email Address</strong></td>
@@ -808,18 +865,6 @@
                         <tr>
                             <td><strong>Firebase UID</strong></td>
                             <td>❌</td>
-                            <td>✅</td>
-                            <td>App Server Database</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Sharing Posts & Devotional Content</strong></td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>App Server Database</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Creation Date/Time</strong></td>
-                            <td>✅</td>
                             <td>✅</td>
                             <td>App Server Database</td>
                         </tr>
@@ -984,7 +1029,46 @@
             <p>Rights can be exercised directly through the 'Settings > Account Management' menu in the app, or through email, and the App will take action without delay.</p>
 
             <h3>Data Deletion for Non-Member Users</h3>
-            <p>Non-member users can directly delete their created sharing posts within the app. To delete all data, they can request deletion by providing their Anonymous ID to the privacy officer.</p>
+            <p>Non-member users can delete their data in two ways:</p>
+
+            <div class="info-box">
+                <h4>📱 Method 1: Delete Directly in App (Recommended)</h4>
+                <ul>
+                    <li><strong>"Delete All My Data" Feature:</strong>
+                        <ul>
+                            <li>Use 'Settings > Account Management > Delete All My Data' menu in the app</li>
+                            <li>Sharing posts and the included anonymous ID will be immediately deleted from the server</li>
+                            <li>Recovery is impossible after deletion</li>
+                        </ul>
+                    </li>
+                    <li><strong>Delete Individual Posts Directly:</strong>
+                        <ul>
+                            <li>Select and delete individual posts from the sharing posts list</li>
+                            <li>Only selected posts will be immediately deleted from the server</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4>📧 Method 2: Request Deletion via Email After App Deletion</h4>
+                <p>If you have already deleted the app and cannot access your anonymous ID, please send a deletion request to the privacy officer's email (manna.attendance@gmail.com) with the following information:</p>
+                <ul>
+                    <li><strong>Required Information:</strong>
+                        <ul>
+                            <li>Part of the sharing post content you want to delete (for verification, about 10-20 characters)</li>
+                            <li>Date when the sharing post was created (approximate period is acceptable)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Optional Information (helpful for verification):</strong>
+                        <ul>
+                            <li>Device information you used (e.g., iPhone 13, Galaxy S21, etc.)</li>
+                            <li>Period of app usage</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>Processing Time:</strong> Deletion will be processed within 7 business days after receiving the request, and we will respond when completed.</p>
+            </div>
 
             <h2>10. Destruction of Personal Information</h2>
             <p>The App destroys personal information without delay when it becomes unnecessary, such as when the retention period has expired or the processing purpose has been achieved.</p>
@@ -995,7 +1079,8 @@
             <ul>
                 <li><strong>Upon Data Deletion Request:</strong>
                     <ul>
-                        <li>Anonymous ID and linked sharing post data are immediately deleted from the app server</li>
+                        <li>Sharing posts and the included anonymous ID are immediately deleted from the app server</li>
+                        <li>Anonymous ID is not stored separately and only exists as part of sharing posts</li>
                         <li>Recovery is impossible after deletion</li>
                     </ul>
                 </li>
